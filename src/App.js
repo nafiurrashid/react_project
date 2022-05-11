@@ -1,5 +1,8 @@
-/* Name:Nafiur Rashid |Email: nafiurrashid@gmail.com
-Code Version: 1.00*/
+/**
+ * @author ${Nafiur Rashid}
+ * @email ${nafiurrashid@gmail.com}
+ * ${Version: 1.00}
+ */
 import ShowTable from "./components/ShowTable";
 import BookProductModal from "./components/BookProductModal";
 import "./App.css";

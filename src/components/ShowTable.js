@@ -1,5 +1,8 @@
-/* Name:Nafiur Rashid |Email: nafiurrashid@gmail.com
-Code Version: 1.00*/
+/**
+ * @author ${Nafiur Rashid}
+ * @email ${nafiurrashid@gmail.com}
+ * ${Version: 1.00}
+ */
 import React from "react";
 import { useState } from "react";
 import JSONDATA from "../records.json";

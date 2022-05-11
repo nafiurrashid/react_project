@@ -1,8 +1,11 @@
-/* Name:Nafiur Rashid |Email: nafiurrashid@gmail.com
-Code Version: 1.00*/
+/**
+ * @author ${Nafiur Rashid}
+ * @email ${nafiurrashid@gmail.com}
+ * ${Version: 1.00}
+ */
 import React from 'react';
 import Select from "react-select";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import JSONDATA from "../records.json";
 import DatePicker from "react-datepicker";
 import BookModal from "react-modal";
@@ -32,6 +35,18 @@ const BookProductModal = () => {
       //setShowBookModal(false)
       setprice(prod[0].price * (Difference_In_Days + 1)); // Since start date = end date, the rental period is 1 day.
     };
+    const onProdChange = (e) => {
+      var newArray = JSONDATA.filter(function (el) {
+        return el.code === e;
+      });
+      setProd(newArray);
+    };
+    useEffect(() => {
+      var newArray = JSONDATA.filter(function (el) {
+        return el.code === "p1";
+      });
+      setProd(newArray);
+    }, []);
     return (
         <div style={{ textAlign: "right" }}>
             <button class="button button1" onClick={ ()=> setModalIsOpen(true)}>Book
@@ -90,6 +105,12 @@ const BookProductModal = () => {
         </BookModal>
 
 
+
+
+
+{/* tnv strart */}
+
+{/* tnv ends */}
 
 
 
