@@ -33,7 +33,7 @@ const ShowTable = () => {
               <TableCell style={{ color: 'white'}}>Name</TableCell>
               <TableCell style={{ color: 'white' }} align="right">Code</TableCell>
               <TableCell style={{ color: 'white' }} align="right">Availability</TableCell>
-              <TableCell style={{ color: 'white' }} align="right">Needing Repair</TableCell>
+              <TableCell style={{ color: 'white' }} align="right">Need to Repair</TableCell>
               <TableCell style={{ color: 'white' }} align="right">Durability</TableCell>
               <TableCell style={{ color: 'white' }} align="right">Mileage</TableCell>
             </TableRow>
@@ -43,7 +43,9 @@ const ShowTable = () => {
             if (searchTerm === "") {
               return val;
             } else if (
-              val.name.toLowerCase().includes(searchTerm.toLowerCase())
+              val.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              val.code.toLowerCase().includes(searchTerm.toLowerCase()) 
+              
             ) {
               return val;
             }
@@ -60,10 +62,10 @@ const ShowTable = () => {
                   </TableCell>
                   <TableCell align="right">{val.code}</TableCell>
                   <TableCell align="right">
-                    {val.availability.toString()}
+                    {val.availability ? "✓" : "X"}
                   </TableCell>
                   <TableCell align="right">
-                    {val.needing_repair.toString()}
+                    {val.needing_repair ? "✓" : "X"}
                   </TableCell>
                   <TableCell align="right">{val.durability}</TableCell>
                   <TableCell align="right">

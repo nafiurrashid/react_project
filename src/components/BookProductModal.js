@@ -12,11 +12,26 @@ import ReturnModal from "react-modal";
 //import { height } from '@mui/system';
 const BookProductModal = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [prod, setProd] = useState();
+    const [price, setprice] = useState();
     const [returnModalIsOpen, setReturnModalIsOpen] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const [value, setValue] = React.useState({});
     const [input, setInput] = useState('');
+    const onButtonClick = () => {
+      var date1 = new Date(startDate);
+      var date2 = new Date(endDate);
+  
+      // To calculate the time difference of two dates
+      var Difference_In_Time = date2.getTime() - date1.getTime();
+  
+      // To calculate the no. of days between two dates
+      var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+      setModalIsOpen(true);
+      //setShowBookModal(false)
+      setprice(prod[0].price * (Difference_In_Days + 1)); // Since start date = end date, the rental period is 1 day.
+    };
     return (
         <div style={{ textAlign: "right" }}>
             <button class="button button1" onClick={ ()=> setModalIsOpen(true)}>Book
@@ -57,8 +72,8 @@ const BookProductModal = () => {
           options={JSONDATA}
           value={value}
           onChange={setValue}
-          getOptionLabel={(value) => value.name+'/'+ value.code}
-          getOptionValue={(value) => value.code}
+          getOptionLabel={(value) => value.name  +'/'+ value.code}
+          getOptionValue={(value) => value.code  }
           >
         </Select>
         {/* <select>
@@ -68,7 +83,7 @@ const BookProductModal = () => {
         </select> */}
         <p></p>
           <div>
-          <button>Yes</button>
+          <button  onClick={() => onButtonClick()}>Yes</button>
           <span>  </span>
             <button onClick={ ()=> setModalIsOpen(false)}>No</button>
           </div>
