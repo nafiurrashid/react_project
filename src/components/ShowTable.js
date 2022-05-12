@@ -86,7 +86,7 @@ const ShowTable = () => {
                   </StyledTableCell>
                   <StyledTableCell  align="right">{val.code}</StyledTableCell>
                   <StyledTableCell  align="right">
-                    {val.availability ? "✓" : "X"}
+                    {val.availability ? "✓Available" : "X On Rent"}
                   </StyledTableCell>
                   <StyledTableCell  align="right">
                     {val.needing_repair ? "✓" : "X"}
