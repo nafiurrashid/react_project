@@ -60,8 +60,7 @@ const BookProductModal = () => {
          
           overlay: {
             backgroundColor:'grey',
-            width:1000,
-            height: 800,
+          
             
           },
           content: {
@@ -98,9 +97,9 @@ const BookProductModal = () => {
         </select> */}
         <p></p>
           <div>
-          <button  onClick={() => onButtonClick()}>Yes</button>
+          <button class="button button1" onClick={()=>{ alert('alert'); }}>Yes</button>
           <span>  </span>
-            <button onClick={ ()=> setModalIsOpen(false)}>No</button>
+            <button class="button button1" onClick={ ()=> setModalIsOpen(false)}>No</button>
           </div>
         </BookModal>
 
@@ -140,9 +139,9 @@ style={
           getOptionValue={(value) => value.code}
           >
         </Select>
-
+<p></p>
         <div>
-    <label>Please specify:</label>
+    <label><strong>Please Specify:</strong></label>
     <input value={input} onInput={e => setInput(e.target.value)}/>
     </div>
 
@@ -150,7 +149,8 @@ style={
 
 
   <div>
-    <button style={{color:'white'}} onClick={ ()=> setReturnModalIsOpen(false)}>Close</button>
+  <button class="button button1" style={{color:'white'}}>Confir Return</button>
+    <button class="button button1" style={{color:'white'}} onClick={ ()=> setReturnModalIsOpen(false)}>Close</button>
   </div>
 </ReturnModal>
         </div>
