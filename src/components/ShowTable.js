@@ -37,7 +37,7 @@ const ShowTable = () => {
     },
   }));
   return (
-    <div>
+    <>
       <div style={{ textAlign: "right" }}>
         <input
           type="text"
@@ -101,7 +101,7 @@ const ShowTable = () => {
           })}
         </Table>
       </TableContainer>
-    </div>
+    </>
   );
 };
 
