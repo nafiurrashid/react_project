@@ -19,6 +19,7 @@ const BookProductModal = () => {
     const [endDate, setEndDate] = React.useState(new Date());
     const [value, setValue] = React.useState("");
    // const [input, setInput] = React.useState('');
+   const checkAvailablity=(value.availability) ;
     const Timediff =
       (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
      const onButtonClick = () => {
@@ -85,8 +86,8 @@ const BookProductModal = () => {
           name="choice"
           // defaultValue={{ label: "Select", value: 0 }}
           defaultValue={value[0]}
-          options={JSONDATA}
-          value={value[0]}
+          options={JSONDATA.filter(value=>value.availability)}
+          value={value}
           onChange={setValue}
           getOptionLabel={(value) => value.name  +'/'+ value.code}
           // getOptionValue={(value) => value.code  }

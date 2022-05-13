@@ -27,7 +27,7 @@ const ReturnProductModal = () => {
         <p>Product return</p>
         <Select 
           name="choice"
-          options={JSONDATA}
+          options={JSONDATA.filter(value=>!value.availability)}
           value={value}
           onChange={setValue}
           getOptionLabel={(value) => value.name+'/'+ value.code}
