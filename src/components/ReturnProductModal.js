@@ -43,7 +43,7 @@ const ReturnProductModal = () => {
         <div>You used {input} milage of {value.name}</div>
         <div></div>
         <div>
-        <button class="button button1" style={{color:'white'}} onClick={()=>{ alert('Your Product return request has been recorded'); setModalIsOpen(false); }  }>Confirm Return</button>
+        <button class="button button1" style={{color:'white'}} onClick={()=>{ alert('Your Product return request has been recorded'); setReturnModalIsOpen(false); }  }>Confirm Return</button>
             <button class="button button1" style={{color:'white'}} onClick={ ()=> setReturnModalIsOpen(false)}>Close</button>
         </div>
  </ReturnModal> 
