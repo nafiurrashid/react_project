@@ -7,7 +7,6 @@ import React from "react";
 import { styled } from '@mui/material/styles';
 import { useState } from "react";
 import JSONDATA from "../records.json";
-//import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -26,7 +25,7 @@ const ShowTable = () => {
       fontSize: 14,
     },
   }));
-  
+
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
@@ -62,23 +61,25 @@ const ShowTable = () => {
               <TableCell style={{ color: 'white' }} align="right">Durability</TableCell>
               <TableCell style={{ color: 'white' }} align="right">Mileage</TableCell>
             </TableRow>
+            
           </TableHead>
+          
 
           {JSONDATA.filter((val) => {
-            if (searchTerm === "") {
+            if (searchTerm === "") { //If nothing is searched the whole value will be returned
               return val;
-            } else if (
+            } else if ( //if name or code is searched
               val.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
               val.code.toLowerCase().includes(searchTerm.toLowerCase()) 
               
             ) {
               return val;
             }
-             }).map((val) => {
+             }).map((val) => { 
             return (
               <TableBody >
                 <StyledTableRow
-                  key={val.name}
+                  key={val.code}
                   
                 >
                   <StyledTableCell  component="th" scope="row">
@@ -97,9 +98,12 @@ const ShowTable = () => {
                   </StyledTableCell>
                 </StyledTableRow>
               </TableBody>
+              
             );
           })}
+          
         </Table>
+  
       </TableContainer>
     </>
   );

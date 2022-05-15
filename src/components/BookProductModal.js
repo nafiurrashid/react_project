@@ -12,14 +12,12 @@ import BookModal from "react-modal";
 import "react-datepicker/dist/react-datepicker.css";
 const BookProductModal = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
-   
     const [prod, setProd] = React.useState();
     const [price, setprice] = useState();
     const [startDate, setStartDate] = React.useState(new Date());
     const [endDate, setEndDate] = React.useState(new Date());
     const [value, setValue] = React.useState("");
-   // const [input, setInput] = React.useState('');
-   const checkAvailablity=(value.availability) ;
+
     const Timediff =
       (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
      const onButtonClick = () => {
@@ -48,83 +46,126 @@ const BookProductModal = () => {
       setProd(newArray);
     }, []);
     return (
-        // <div style={{ textAlign: "right" }}>
         <>
-            <button class="button button1" onClick={ ()=> setModalIsOpen(true)}>Book
+            <button 
+            class="button button1" 
+            onClick={ ()=> setModalIsOpen(true)}
+            >Book
             </button>
-              <BookModal isOpen={modalIsOpen} shouldCloseOnOverlayClick={false} onRequestClose= { ()=> setModalIsOpen(false)}
-        style={
-          {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-         
-          overlay: {
-            backgroundColor:'grey',
-          
-            
-          },
-          content: {
-            color: 'Black'
-          }
-        }
-      }
-        >
+
+              <BookModal
+               isOpen={modalIsOpen} 
+               shouldCloseOnOverlayClick={false} 
+               onRequestClose= { ()=> setModalIsOpen(false)}
+                style={
+                  {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                
+                    overlay: {
+                      backgroundColor:'grey',                
+                    },
+
+                    content: {
+                      color: 'Black'
+                    }
+                  }
+               }
+              >
+
+
           <h1>Book a Product</h1>
           <span><strong>From</strong></span>
-          <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+
+          <DatePicker 
+            selected={startDate} 
+            onChange={(date) => setStartDate(date)}  
+            minDate= '0'
+          />
          
           <span><strong>To</strong></span>
-          <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
-         <br></br>
-         <p></p>
+
+          <DatePicker
+            selected={endDate} 
+            onChange={(date) => setEndDate(date)} 
+           />
+          <br></br>
+          <p></p>
         
           <span>
-            
+
           <strong>Product booking:</strong></span>
           <Select 
-          name="choice"
-          // defaultValue={{ label: "Select", value: 0 }}
-          defaultValue={value[0]}
-          options={JSONDATA.filter(value=>value.availability)}
-          value={value}
-          onChange={setValue}
-          getOptionLabel={(value) => value.name  +'/'+ value.code}
-          // getOptionValue={(value) => value.code  }
-          getOptionValue={(value) => value.availability && value.code }     
-          >
-           
-        </Select>
-        <p></p>
-        <div>You want to Book {value.name} {value.code} from {startDate.getDate() }/{startDate.getMonth()}/{startDate.getFullYear()} to {endDate.getDate()}/{endDate.getMonth()}/{endDate.getFullYear()} </div>
-        <div> Minimum Rental period: {value.minimum_rent_period} Day</div>
-        <div>Rental period: {Math.round(Timediff)}</div>
+            name="choice"
+            defaultValue={value[1]}
+            options={JSONDATA.filter(value=>value.availability)}
+            value={value}
+            onChange={setValue}
+            getOptionLabel={(value) => value.name  +'/'+ value.code}
+            getOptionValue={(value) => value.availability && value.code }     
+           >
+           </Select>
+
+           <p></p>
+
+        <div>
+          You want to Book {value.name} {value.code} from {startDate.getDate() }/{startDate.getMonth()}/{startDate.getFullYear()} to {endDate.getDate()}/{endDate.getMonth()}/{endDate.getFullYear()} 
+        </div>
+
+        <div> Minimum Rental Period: {value.minimum_rent_period} Days</div>
+        <div>Selected Rental Period: {Math.round(Timediff)} Days</div>
         <div> Product Price: BDT{value.price} </div> 
-         {/* <div>{value.availability && <button>Logout</button>}</div> */}
+
         <hr></hr>
+
         <div><strong>Your Rental Fee: </strong>{Math.round(Timediff)*value.price}</div>
         <div><strong>Meter Estimation:</strong> {Math.round(Timediff)*10}</div>
-       {/* <div>{value.availability && <button>Logout</button>}</div> */}
-       {/* <div>Plain Type:{value.durability-Math.round(Timediff)}</div>
-       <div>Meter Type: {value.durability-2*Math.round(Timediff)}</div> */}
-        <div> <strong>Durability calculation:</strong>
-        { value.type==="meter" ? value.durability-2*Math.round(Timediff) : value.durability-Math.round(Timediff)}</div>
-         {/* <strong>Please Select a Time greater than minimum Rental Period</strong>*/}
-         <div> 
-        { value.minimum_rent_period<=Math.round(Timediff) ? 
+        <div> 
+          <strong>Durability calculation:</strong>
+            { value.type==="meter" ? 
+            // for meter type
+              value.durability-2*Math.round(Timediff) :
+              // for not "meter" which is plain type
+              value.durability-Math.round(Timediff)-value.mileage%10
+            }
+        </div>
+         
+        <div> 
+          { value.minimum_rent_period<=Math.round(Timediff) ? 
         <>
-         <button class="button button1" onClick={()=>{ alert('Your booking request has been recorded'); setModalIsOpen(false); }  }>Yes</button>
+        {/* If a value more or equal to than minimum rental period is selected */}
+         <p style={{color: "green"}}>congratulataion! You can avail a discount now!</p>
+         <button class="button button1" 
+                onClick={()=>{ alert('Your booking request has been recorded'); 
+                  setModalIsOpen(false); }  
+                  }>Yes
+         </button>
+
          <span>  </span>
-         <button class="button button1" onClick={ ()=> setModalIsOpen(false)}>No</button>
+
+         <button class="button button1" 
+                onClick={ ()=> setModalIsOpen(false)}
+                >No
+          </button>
          </>
           :
           <>
+          {/* If a value less than minimum rental period is selected */}
           <p style={{color: "red"}}>Please Select a Time greater than minimum Rental Period</p> 
-          <button class="buttonDisabled  button1" disabled onClick={()=>{ alert('Your booking request has been recorded'); setModalIsOpen(false); }  }>Yes</button>
+          <button 
+            class="buttonDisabled  button1" disabled 
+            onClick={()=>{ alert('Your booking request has been recorded');
+            setModalIsOpen(false); }  }
+            >Yes
+          </button>
           <span>  </span>
-          <button class="button button1" onClick={ ()=> setModalIsOpen(false)}>No</button>
+          <button class="button button1" 
+                  onClick={ ()=> setModalIsOpen(false)
+                  }>No
+          </button>
           </>
-}
+        }
            </div>
 
 

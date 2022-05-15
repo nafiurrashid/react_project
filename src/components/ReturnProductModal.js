@@ -22,30 +22,51 @@ const ReturnProductModal = () => {
                 }
                 }
                 }
-                        >
+        >
+
         <h1>Return a Product</h1>
         <p>Product return</p>
+        {/* selection of the product */}
         <Select 
           name="choice"
-          options={JSONDATA.filter(value=>!value.availability)}
+          defaultValue={value[1]}
+          //filtered by availablity (only unavaliable products can be returned)
+          options={JSONDATA.filter(value=>!value.availability)} 
           value={value}
           onChange={setValue}
-          getOptionLabel={(value) => value.name+'/'+ value.code}
-          getOptionValue={(value) => value.code}
-          >
+          getOptionLabel={(value) => value.name+'/'+ value.code} // here 'name/code' format is followed
+          getOptionValue={(value) => value.code} // code is the unique value by which it is recognised
+        >        
         </Select>
+        
         <p></p>
+
+        {/* Taking non-negative input of the milage that is */}
         <div>
-        <label><strong>Used Mileage:</strong></label>
-         <input type="number" min="0" value={input} onInput={e => setInput(e.target.value)}/>
+            <label><strong>Used Mileage:</strong></label>
+            <input type="number" min="0" value={input} onInput={e => setInput(e.target.value)}/>
         </div>
-        {/* <div>Milage: {input}</div> */}
+
         <div>You used {input} milage of {value.name}</div>
-        <div></div>
+
         <div>
-        <button class="button button1" style={{color:'white'}} onClick={()=>{ alert('Your Product return request has been recorded'); setReturnModalIsOpen(false); }  }>Confirm Return</button>
-            <button class="button button1" style={{color:'white'}} onClick={ ()=> setReturnModalIsOpen(false)}>Close</button>
+            {/* confirmation button */}
+            <button 
+            class="button button1"
+            style={{color:'white'}} 
+            onClick={()=>{ alert('Your Product return request has been recorded'); 
+            setReturnModalIsOpen(false); }  }
+            >Confirm Return
+            </button>
+        
+            <button 
+            class="button button1"
+            style={{color:'white'}} 
+            onClick={ ()=> setReturnModalIsOpen(false)}
+            >Close
+            </button>
         </div>
+
  </ReturnModal> 
         </>
     );
