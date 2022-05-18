@@ -76,3 +76,26 @@ table{
   font-size: 20px;
   padding-left: 10px;
 }
+
+#rentaldata {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#rentaldata td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#rentaldata tr:nth-child(even){background-color: #f2f2f2;}
+
+#rentaldata tr:hover {background-color: #ddd;}
+
+/* #rentaldata th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+} */

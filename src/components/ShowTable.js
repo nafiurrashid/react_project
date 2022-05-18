@@ -3,8 +3,9 @@
  * @email ${nafiurrashid@gmail.com}
  * ${Version: 1.00}
  */
+
 import React from "react";
-import { DataGrid } from '@mui/x-data-grid';
+// import { DataGrid } from '@mui/x-data-grid';
 import { styled } from '@mui/material/styles';
 import { useState } from "react";
 import JSONDATA from "../records.json";
@@ -15,21 +16,21 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import TablePagination from '@mui/material/TablePagination';
+// import TablePagination from '@mui/material/TablePagination';
 
 const ShowTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  // const [page, setPage] = React.useState(0);
+  // const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
+  // const handleChangePage = (event, newPage) => {
+  //   setPage(newPage);
+  // };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
+  // const handleChangeRowsPerPage = (event) => {
+  //   setRowsPerPage(+event.target.value);
+  //   setPage(0);
+  // };
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -65,12 +66,12 @@ const ShowTable = () => {
       
           <Paper  sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 800 }}>
-        <Table>
+        <Table id="rentaldata">
           <TableHead>
-            <TableRow hover role="checkbox" tabIndex={-1}>
+            <TableRow>
             
               <StyledTableCell>Name</StyledTableCell>
-              <StyledTableCell style={{ color: 'white' }} align="right">Code</StyledTableCell>
+              <StyledTableCell  align="right">Code</StyledTableCell>
               <StyledTableCell align="right">Availability</StyledTableCell>
               <StyledTableCell align="right">Need to Repair</StyledTableCell>
               <StyledTableCell align="right">Durability</StyledTableCell>
@@ -94,14 +95,13 @@ const ShowTable = () => {
             return (
               <TableBody >
                 <StyledTableRow
-                hover role="checkbox" tabIndex={-1}
                   key={val.code}
                 
                 >
 
 
                   
-                  <StyledTableCell  component="th" scope="row">
+                  <StyledTableCell  component="tr" scope="row">
                     {val.name}
                   </StyledTableCell>
                   <StyledTableCell  align="right">{val.code}</StyledTableCell>
