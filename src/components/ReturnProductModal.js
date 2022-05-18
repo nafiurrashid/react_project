@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import ReturnModal from "react-modal";
 const ReturnProductModal = () => {
     const [returnModalIsOpen, setReturnModalIsOpen] = useState(false);
-    const [value, setValue] = React.useState({});
+    const [value, setValue] = React.useState('');
     const [input, setInput] = useState('');
     return (
         <>
