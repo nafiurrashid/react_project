@@ -4,6 +4,7 @@
  * ${Version: 1.00}
  */
 import React from "react";
+
 import { styled } from '@mui/material/styles';
 import { useState } from "react";
 import JSONDATA from "../records.json";
@@ -14,6 +15,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+
 const ShowTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -47,13 +49,11 @@ const ShowTable = () => {
         />
       </div>
       <br></br>
-
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead sx={{ 
-            backgroundColor: "#4CAF50"
-             }}>
-            <TableRow >
+          <Paper  sx={{ width: '100%', overflow: 'hidden' }}>
+      <TableContainer sx={{ maxHeight: 800 }}>
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead>
+            <TableRow hover role="checkbox" tabIndex={-1}>
             
               <StyledTableCell style={{ color: 'white'}}>Name</StyledTableCell>
               <StyledTableCell style={{ color: 'white' }} align="right">Code</StyledTableCell>
@@ -81,7 +81,7 @@ const ShowTable = () => {
               <TableBody >
                 <StyledTableRow
                   key={val.code}
-                  
+                
                 >
                   <StyledTableCell  component="th" scope="row">
                     {val.name}
@@ -106,6 +106,8 @@ const ShowTable = () => {
         </Table>
   
       </TableContainer>
+      
+      </Paper>
     </>
   );
 };
