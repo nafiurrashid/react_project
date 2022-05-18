@@ -13,15 +13,37 @@ const ReturnProductModal = () => {
      <button class="button button1" onClick={ ()=> setReturnModalIsOpen(true)}>Return</button>
      <ReturnModal isOpen={returnModalIsOpen} shouldCloseOnOverlayClick={false} onRequestClose= { ()=> setReturnModalIsOpen(false)}
                 style={
-                {
-                overlay: {
-                    backgroundColor:'grey'
-                },
-                content: {
-                    color: 'Black'
-                }
-                }
-                }
+                    {
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                  
+                      overlay: {
+                        position: 'fixed',
+                        top: 15 ,
+                        left: 15,
+                        right: 50,
+                        bottom: 15,
+                        backgroundColor:'grey',                
+                      },
+  
+                      content: {
+                        color: 'Black',
+                        position: 'absolute',
+        top: '100px',
+        left: '600px',
+        right: '700px',
+        bottom: '500px',
+        border: '1px solid #ccc',
+        background: '#fff',
+        overflow: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        borderRadius: '4px',
+        outline: 'none',
+        padding: '20px'
+                      }
+                    }
+                 }
         >
 
         <h1>Return a Product</h1>
@@ -29,7 +51,6 @@ const ReturnProductModal = () => {
         {/* selection of the product */}
         <Select 
           name="choice"
-          defaultValue={value[1]}
           //filtered by availablity (only unavaliable products can be returned)
           options={JSONDATA.filter(value=>!value.availability)} 
           value={value}
@@ -43,10 +64,10 @@ const ReturnProductModal = () => {
 
         {/* Taking non-negative input of the milage that is */}
         <div>
-            <label><strong>Used Mileage:</strong></label>
+            <label><strong>Used Mileage:  </strong></label> <span></span>
             <input type="number" min="0" value={input} onInput={e => setInput(e.target.value)}/>
         </div>
-
+<p></p>
         <div>You used {input} milage of {value.name}</div>
 
         <div>

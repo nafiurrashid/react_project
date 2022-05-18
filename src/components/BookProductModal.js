@@ -64,11 +64,28 @@ const BookProductModal = () => {
                     alignItems: "center",
                 
                     overlay: {
+                      position: 'fixed',
+                      top: 15 ,
+                      left: 15,
+                      right: 50,
+                      bottom: 15,
                       backgroundColor:'grey',                
                     },
 
                     content: {
-                      color: 'Black'
+                      color: 'Black',
+                      position: 'absolute',
+      top: '100px',
+      left: '600px',
+      right: '700px',
+      bottom: '200px',
+      border: '1px solid #ccc',
+      background: '#fff',
+      overflow: 'auto',
+      WebkitOverflowScrolling: 'touch',
+      borderRadius: '4px',
+      outline: 'none',
+      padding: '20px'
                     }
                   }
                }
@@ -76,12 +93,22 @@ const BookProductModal = () => {
 
 
           <h1>Book a Product</h1>
-          <span><strong>From</strong></span>
+          <span>
 
+<strong>Product booking:</strong></span>
+          <Select 
+            name="choice"
+            options={JSONDATA.filter(value=>value.availability)}
+            value={value}
+            onChange={setValue}
+            getOptionLabel={(value) => value.name  +'/'+ value.code}
+            getOptionValue={(value) => value.availability && value.code }     
+           >
+           </Select>
+          <span><strong>From</strong> </span>
           <DatePicker 
             selected={startDate} 
             onChange={(date) => setStartDate(date)}  
-            minDate= '0'
           />
          
           <span><strong>To</strong></span>
@@ -90,22 +117,7 @@ const BookProductModal = () => {
             selected={endDate} 
             onChange={(date) => setEndDate(date)} 
            />
-          <br></br>
-          <p></p>
-        
-          <span>
-
-          <strong>Product booking:</strong></span>
-          <Select 
-            name="choice"
-            defaultValue={value[1]}
-            options={JSONDATA.filter(value=>value.availability)}
-            value={value}
-            onChange={setValue}
-            getOptionLabel={(value) => value.name  +'/'+ value.code}
-            getOptionValue={(value) => value.availability && value.code }     
-           >
-           </Select>
+   
 
            <p></p>
 
@@ -116,7 +128,7 @@ const BookProductModal = () => {
         <div> Minimum Rental Period: {value.minimum_rent_period} Days</div>
         <div>Selected Rental Period: {Math.round(Timediff)} Days</div>
         <div> Product Price: BDT{value.price} </div> 
-
+        
         <hr></hr>
 
         <div><strong>Your Rental Fee: </strong>{Math.round(Timediff)*value.price}</div>
