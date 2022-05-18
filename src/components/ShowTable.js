@@ -54,12 +54,13 @@ const ShowTable = () => {
             backgroundColor: "#4CAF50"
              }}>
             <TableRow >
-              <TableCell style={{ color: 'white'}}>Name</TableCell>
-              <TableCell style={{ color: 'white' }} align="right">Code</TableCell>
-              <TableCell style={{ color: 'white' }} align="right">Availability</TableCell>
-              <TableCell style={{ color: 'white' }} align="right">Need to Repair</TableCell>
-              <TableCell style={{ color: 'white' }} align="right">Durability</TableCell>
-              <TableCell style={{ color: 'white' }} align="right">Mileage</TableCell>
+            
+              <StyledTableCell style={{ color: 'white'}}>Name</StyledTableCell>
+              <StyledTableCell style={{ color: 'white' }} align="right">Code</StyledTableCell>
+              <StyledTableCell style={{ color: 'white' }} align="right">Availability</StyledTableCell>
+              <StyledTableCell style={{ color: 'white' }} align="right">Need to Repair</StyledTableCell>
+              <StyledTableCell style={{ color: 'white' }} align="right">Durability</StyledTableCell>
+              <StyledTableCell style={{ color: 'white' }} align="right">Mileage</StyledTableCell>
             </TableRow>
             
           </TableHead>
