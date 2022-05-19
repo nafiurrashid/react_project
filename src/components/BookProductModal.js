@@ -10,7 +10,11 @@ import JSONDATA from "../records.json";
 import DatePicker from "react-datepicker";
 import BookModal from "react-modal";
 import "react-datepicker/dist/react-datepicker.css";
+// import { Today } from '@mui/icons-material';
+// import { now } from 'moment';
 const BookProductModal = () => {
+  // const current = new Date();
+  // const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [prod, setProd] = React.useState();
     const [price, setprice] = useState();
@@ -75,10 +79,10 @@ const BookProductModal = () => {
                     content: {
                       color: 'Black',
                       position: 'absolute',
-      top: '100px',
-      left: '600px',
-      right: '700px',
-      bottom: '200px',
+      top: '10px',
+      left: '400px',
+      right: '400px',
+      bottom: '40px',
       border: '1px solid #ccc',
       background: '#fff',
       overflow: 'auto',
@@ -105,9 +109,14 @@ const BookProductModal = () => {
             getOptionValue={(value) => value.availability && value.code }     
            >
            </Select>
+           {/* <p>Current date is {date}</p>
+           <div>{new Date().toLocaleString("en-US", { day : '2-digit'})}</div>
+           <div>{new Date().toLocaleString() + ''}</div> */}
+           {/* <div>{now.getDate()}</div> */}
           <span><strong>From</strong> </span>
           <DatePicker 
             selected={startDate} 
+             minDate={new Date()}
             onChange={(date) => setStartDate(date)}  
           />
          
@@ -115,6 +124,7 @@ const BookProductModal = () => {
 
           <DatePicker
             selected={endDate} 
+            minDate={startDate}
             onChange={(date) => setEndDate(date)} 
            />
    

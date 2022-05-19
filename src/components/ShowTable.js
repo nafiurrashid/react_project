@@ -65,7 +65,7 @@ const ShowTable = () => {
       <br></br>
       
           <Paper  sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 800 }}>
+      <TableContainer sx={{ maxHeight: 500 }}>
         <Table id="rentaldata">
           <TableHead>
             <TableRow>
