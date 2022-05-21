@@ -8,6 +8,25 @@ const ReturnProductModal = () => {
   const [returnModalIsOpen, setReturnModalIsOpen] = useState(false);
   const [value, setValue] = React.useState("");
   const [input, setInput] = useState("");
+
+  const setAvailability = () => {
+    let jsonData = localStorage.getItem("data");
+    if (jsonData) {
+      jsonData = JSON.parse(jsonData);
+
+      jsonData.map((data) => {
+        if (data.code === value.code) {
+          data.availability = true;
+          data.mileage = input;
+        }
+      });
+      localStorage.setItem("data", JSON.stringify(jsonData));
+    } else {
+      localStorage.setItem("data", JSON.stringify(JSONDATA));
+    }
+  };
+  setAvailability();
+
   return (
     <>
       <button class="button button1" onClick={() => setReturnModalIsOpen(true)}>
@@ -33,11 +52,11 @@ const ReturnProductModal = () => {
 
           content: {
             color: "Black",
-            position:"absolute",
+            position: "absolute",
             // top: "100px",
-            left: '400px',
-            right: '400px',
-             bottom: "200px",
+            left: "400px",
+            right: "400px",
+            bottom: "200px",
             border: "1px solid #ccc",
             background: "#fff",
             overflow: "auto",
@@ -54,7 +73,9 @@ const ReturnProductModal = () => {
         <Select
           name="choice"
           //filtered by availablity (only unavaliable products can be returned)
-          options={JSONDATA.filter((value) => !value.availability)}
+          options={JSON.parse(localStorage.getItem("data")).filter(
+            (value) => !value.availability
+          )}
           value={value}
           onChange={setValue}
           getOptionLabel={(value) => value.name + "/" + value.code} // here 'name/code' format is followed
@@ -89,6 +110,8 @@ const ReturnProductModal = () => {
             onClick={() => {
               alert("Your Product return request has been recorded");
               setReturnModalIsOpen(false);
+              setAvailability();
+              window.location.reload(false);
             }}
           >
             Confirm Return
