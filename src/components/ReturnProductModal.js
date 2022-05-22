@@ -1,7 +1,12 @@
+/**
+ * @author ${Nafiur Rashid}
+ * @email ${nafiurrashid@gmail.com}
+ * ${Version: 1.00}
+ */
 import React from "react";
 import Select from "react-select";
 import { useState } from "react";
-import JSONDATA from "../records.json";
+import JSONDATA from "../model/records.json";
 import "react-datepicker/dist/react-datepicker.css";
 import ReturnModal from "react-modal";
 const ReturnProductModal = () => {

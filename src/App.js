@@ -4,7 +4,7 @@
  * ${Version: 1.00}
  */ 
 import RentalTableHome from "./components/RentalTableHome";
-import "./App.css";
+import "../src/asset/css/style.css";
 import * as React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Modal from "react-modal";

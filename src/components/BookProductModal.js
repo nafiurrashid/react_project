@@ -6,34 +6,14 @@
 import React from "react";
 import Select from "react-select";
 import { useState, useEffect } from "react";
-import JSONDATA from "../records.json";
+import JSONDATA from "../model/records.json";
 import DatePicker from "react-datepicker";
 import BookModal from "react-modal";
 import "react-datepicker/dist/react-datepicker.css";
-// import cloneDeep from 'lodash.clonedeep';
-// import { Today } from '@mui/icons-material';
-// import { now } from 'moment';
+
 
 const BookProductModal = () => {
-  // const current = new Date();
-  // const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
-  // const obj = {
-  //   person: {
-  //     name: {
-  //       first: 'James',
-  //       last: 'Doe',
-  //     },
-  //     address: {
-  //       country: 'Chile',
-  //       city: 'Santiago',
-  //     },
-  //   },
-  // };
-  // const deepClone = JSON.parse(JSON.stringify(obj));
-
-  // deepClone.person.name.first = 'Bob';
-
-  // console.log(obj.person.name.first);
+ 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [prod, setProd] = React.useState();
   const [price, setprice] = useState();
@@ -56,18 +36,6 @@ const BookProductModal = () => {
     //setShowBookModal(false)
     setprice(prod[0].price * (Difference_In_Days + 1)); // Since start date = end date, the rental period is 1 day.
   };
-  const onProdChange = (e) => {
-    var newArray = JSONDATA.filter(function (el) {
-      return el.code === e;
-    });
-    setProd(newArray);
-  };
-  useEffect(() => {
-    var newArray = JSONDATA.filter(function (el) {
-      return el.code === "p1";
-    });
-    setProd(newArray);
-  }, []);
 
   const setAvailability = () => {
     let jsonData = localStorage.getItem("data");
@@ -140,10 +108,7 @@ const BookProductModal = () => {
           getOptionLabel={(value) => value.name + "/" + value.code}
           getOptionValue={(value) => value.availability && value.code}
         ></Select>
-        {/* <p>Current date is {date}</p>
-           <div>{new Date().toLocaleString("en-US", { day : '2-digit'})}</div>
-           <div>{new Date().toLocaleString() + ''}</div> */}
-        {/* <div>{now.getDate()}</div> */}
+
         <span>
           <strong>From</strong>{" "}
         </span>
