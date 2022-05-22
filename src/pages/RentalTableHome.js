@@ -1,7 +1,7 @@
 import React from 'react';
-import ShowTable from "./ShowTable";
-import BookProductModal from "./BookProductModal";
-import ReturnProductModal from "./ReturnProductModal";
+import ShowTable from "../components/ShowTable";
+import BookProductModal from "../components/BookProductModal";
+import ReturnProductModal from "../components/ReturnProductModal";
 
 const RentalTableHome = () => {
     return (

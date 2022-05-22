@@ -51,7 +51,7 @@ const ShowTable = () => {
       border: 0,
     },
   }));
-  console.log("sk", products);
+  // console.log("sk", products);
   return (
     <>
       <div style={{ textAlign: "right" }}>
