@@ -6,7 +6,9 @@
 import React from "react";
 import Select from "react-select";
 import { useState, useEffect } from "react";
-import JSONDATA from "../model/records.json";
+// import JSONDATA from "../model/records.json";
+import JSONDATA from "../../model/records.json";
+
 import DatePicker from "react-datepicker";
 import BookModal from "react-modal";
 import "react-datepicker/dist/react-datepicker.css";

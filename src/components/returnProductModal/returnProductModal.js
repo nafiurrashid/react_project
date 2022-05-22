@@ -6,14 +6,13 @@
 import React from "react";
 import Select from "react-select";
 import { useState } from "react";
-import JSONDATA from "../model/records.json";
+import JSONDATA from "../../model/records.json";
 import "react-datepicker/dist/react-datepicker.css";
 import ReturnModal from "react-modal";
 const ReturnProductModal = () => {
   const [returnModalIsOpen, setReturnModalIsOpen] = useState(false);
   const [value, setValue] = React.useState("");
   const [input, setInput] = useState("");
-
   const setAvailability = () => {
     let jsonData = localStorage.getItem("data");
     if (jsonData) {
@@ -33,7 +32,7 @@ const ReturnProductModal = () => {
   setAvailability();
 
   return (
-    <>
+    <div data-testid="returnProductModal">
       <button class="button button1" onClick={() => setReturnModalIsOpen(true)}>
         Return
       </button>
@@ -50,7 +49,7 @@ const ReturnProductModal = () => {
             position: "fixed",
             top: 15,
             left: 15,
-            right: 50,
+            right: 15,
             bottom: 15,
             backgroundColor: "grey",
           },
@@ -131,7 +130,7 @@ const ReturnProductModal = () => {
           </button>
         </div>
       </ReturnModal>
-    </>
+    </div>
   );
 };
 

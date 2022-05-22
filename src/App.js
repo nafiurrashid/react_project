@@ -8,11 +8,11 @@ import RentalTableHome from "./pages/RentalTableHome";
 import "../src/asset/css/style.css";
 import * as React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import Modal from "react-modal";
 
 
 
-Modal.setAppElement("#root");
+
+// Modal.setAppElement("#root");
 function App() {
 
   return ( 

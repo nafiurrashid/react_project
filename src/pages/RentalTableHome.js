@@ -1,7 +1,12 @@
+/**
+ * @author ${Nafiur Rashid}
+ * @email ${nafiurrashid@gmail.com}
+ * ${Version: 1.00}
+ */
 import React from 'react';
-import ShowTable from "../components/ShowTable";
-import BookProductModal from "../components/BookProductModal";
-import ReturnProductModal from "../components/ReturnProductModal";
+import ShowTable from "../components/showTable/showTable"
+import BookProductModal from "../components/bookProductModal/bookProductModal";
+import ReturnProductModal from "../components/returnProductModal/returnProductModal";
 
 const RentalTableHome = () => {
     return (
