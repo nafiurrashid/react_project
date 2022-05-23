@@ -13,6 +13,7 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import TablePagination from '@mui/material/TablePagination';
 import Paper from "@mui/material/Paper";
 
 const ShowTable = () => {
@@ -20,6 +21,23 @@ const ShowTable = () => {
   const [products, setProducts] = useState(
     JSON.parse(localStorage.getItem("data"))
   );
+
+
+
+// pagination constant assignment starts
+const [page, setPage] = React.useState(0);
+const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+const handleChangePage = (event, newPage) => {
+  setPage(newPage);
+};
+
+const handleChangeRowsPerPage = (event) => {
+  setRowsPerPage(+event.target.value);
+  setPage(0);
+};
+
+  // pagination constant assignment end
 
   useEffect(() => {
     
@@ -73,7 +91,7 @@ const ShowTable = () => {
       {/* <br></br> */}
 
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
-        <TableContainer sx={{ maxHeight: 500 }}>
+        <TableContainer sx={{ maxHeight: 950 }}>
           <Table id="rentaldata">
             <TableHead>
               <TableRow>
@@ -98,16 +116,16 @@ const ShowTable = () => {
                 ) {
                   return val;
                 }
-              })
+              }).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((val) => {
                 return (
-                  <TableBody>
+                  <TableBody key={val.code}>
                     <StyledTableRow
-                      key={val.code}
+                      // key={val.code}
                       name={val.name}
                       mileage={val.mileage}
                     >
-                      <StyledTableCell component="tr" scope="row">
+                      <StyledTableCell component="" scope="row">
                         {val.name}
                       </StyledTableCell>
                       <StyledTableCell align="right">
@@ -131,7 +149,15 @@ const ShowTable = () => {
               })}
           </Table>
         </TableContainer>
-
+        <TablePagination
+        rowsPerPageOptions={[10, 25, 50]}
+        component="div"
+        count={products.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
       </Paper>
     </>
   );

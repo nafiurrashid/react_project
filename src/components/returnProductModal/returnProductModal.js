@@ -33,7 +33,7 @@ const ReturnProductModal = () => {
 
   return (
     <>
-      <button class="button button1" onClick={() => setReturnModalIsOpen(true)}>
+      <button className="button button1" onClick={() => setReturnModalIsOpen(true)}>
       Return a Product
       </button>
       <ReturnModal
@@ -114,7 +114,7 @@ const ReturnProductModal = () => {
         <div style={{ margin: '0 auto'}}>
           {/* confirmation button */}
           <button
-            class="button button1"
+            className="button button1"
             style={{ color: "white" }}
             onClick={() => {
               alert("Your Product return request has been recorded");
@@ -127,7 +127,7 @@ const ReturnProductModal = () => {
           </button>
 
           <button
-            class="button button1"
+            className="button button1"
             style={{ color: "white" }}
             onClick={() => setReturnModalIsOpen(false)}
           >

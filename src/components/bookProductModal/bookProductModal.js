@@ -55,7 +55,7 @@ const BookProductModal = () => {
   setAvailability();
   return (
     <>
-      <button class="button button1" onClick={() => setModalIsOpen(true)}>
+      <button className="button button1" onClick={() => setModalIsOpen(true)}>
         Book a Product
       </button>
 
@@ -171,7 +171,7 @@ const BookProductModal = () => {
                 congratulataion! You can avail a discount now!
               </p>
               <button
-                class="button button1"
+                className="button button1"
                 onClick={() => {
                   alert("Your booking request has been recorded");
                   setModalIsOpen(false);
@@ -185,7 +185,7 @@ const BookProductModal = () => {
               <span> </span>
 
               <button
-                class="button button1"
+                className="button button1"
                 onClick={() => setModalIsOpen(false)}
               >
                 No
@@ -198,7 +198,7 @@ const BookProductModal = () => {
                 Please Select a Time greater than minimum Rental Period
               </p>
               <button
-                class="buttonDisabled  button1"
+                className="buttonDisabled  button1"
                 disabled
                 onClick={() => {
                   alert("Your booking request has been recorded");
@@ -209,7 +209,7 @@ const BookProductModal = () => {
               </button>
               <span> </span>
               <button
-                class="button button1"
+                className="button button1"
                 onClick={() => setModalIsOpen(false)}
               >
                 No
