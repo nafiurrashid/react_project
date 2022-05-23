@@ -6,7 +6,7 @@
 
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
-//import JSONDATA from "../../model/records.json";
+//import JSONDATA from "../../dataModel/records.json";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
@@ -58,7 +58,7 @@ const ShowTable = () => {
       <div style={{ textAlign: "right", backgroundColor: "#4CAF50",borderRadius:"10px"}}>
         <span>
           {/* <h5 style={{ textAlign: "left"}}>Rental Table By N.R </h5> */}
-        <span style={{ textAlign: "left",float:"left",fontSize:'1.8em',fontWeight:900, padding:'2.5px',paddingLeft:'10px',paddingBottom:'10px',borderRadius:"15px"}}>Rental Software</span>
+        <span style={{ textAlign: "left",float:"left",fontSize:'1.8em',fontWeight:900, padding:'2.5px',paddingLeft:'10px',paddingBottom:'10px',borderRadius:"15px"}}>Rental Inventory</span>
         <input
           type="text"
           placeholder="Search by Name or Code.."

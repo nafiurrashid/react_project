@@ -20,6 +20,7 @@ const RentalTableHome = () => {
                 {/* end modal */}
                 <ReturnProductModal />
             </div>
+          
         </div>
     );
 };

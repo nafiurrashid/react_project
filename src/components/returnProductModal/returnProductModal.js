@@ -6,7 +6,7 @@
 import React from "react";
 import Select from "react-select";
 import { useState } from "react";
-import JSONDATA from "../../model/records.json";
+import JSONDATA from "../../dataModel/records.json";
 import "react-datepicker/dist/react-datepicker.css";
 import ReturnModal from "react-modal";
 const ReturnProductModal = () => {
@@ -51,7 +51,7 @@ const ReturnProductModal = () => {
             // left: 15,
             // right: 15,
             // bottom: 15,
-            backgroundColor: 'rgba(128, 128, 128, 0.85)',
+            backgroundColor: 'rgba(128, 128, 128, .2)',
           },
 
           content: {
