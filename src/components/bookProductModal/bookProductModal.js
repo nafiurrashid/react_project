@@ -5,7 +5,7 @@
  */
 import React from "react";
 import Select from "react-select";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // import JSONDATA from "../model/records.json";
 import JSONDATA from "../../model/records.json";
 
@@ -82,10 +82,10 @@ const BookProductModal = () => {
           content: {
             color: "Black",
             position: "absolute",
-            top: "10px",
-            left: "400px",
-            right: "400px",
-            bottom: "40px",
+            top: "20px",
+            left: "40px",
+            right: "40px",
+            bottom: "20px",
             border: "5px solid #ccc",
             background: "#fff",
             overflow: "auto",
@@ -93,8 +93,10 @@ const BookProductModal = () => {
             borderRadius: "4px",
             outline: "none",
             padding: "20px",
-            maxWidth:"500px",
+            maxWidth:"400px",
             margin: "0 auto",
+            height: 'fit-content',
+            width: 'fit-content',
           },
         }}
       >
@@ -116,6 +118,7 @@ const BookProductModal = () => {
         <span>
           <strong>From</strong>{" "}
         </span>
+        
         <DatePicker
           selected={startDate}
           minDate={new Date()}

@@ -58,9 +58,9 @@ const ReturnProductModal = () => {
             color: "Black",
             position: "absolute",
             // top: "100px",
-            left: "400px",
-            right: "400px",
-            bottom: "200px",
+            left: "40px",
+            right: "40px",
+            bottom: "20px",
             border: "5px solid #ccc",
             background: "#fff",
             overflow: "auto",
@@ -68,8 +68,10 @@ const ReturnProductModal = () => {
             borderRadius: "4px",
             outline: "none",
             padding: "20px",
-            maxWidth:"500px",
+            maxWidth:"400px",
             margin: "0 auto",
+            height: 'fit-content',
+            width: 'fit-content',
           },
         }}
       >
@@ -95,12 +97,13 @@ const ReturnProductModal = () => {
           <label>
             <strong>Used Mileage: </strong>
           </label>{" "}
-          <span></span>
+          
           <input
             type="number"
             min="0"
             value={input}
             onInput={(e) => setInput(e.target.value)}
+
           />
         </div>
         <p></p>
@@ -108,7 +111,7 @@ const ReturnProductModal = () => {
           You used {input} milage of {value.name}
         </div>
 
-        <div>
+        <div style={{ margin: '0 auto'}}>
           {/* confirmation button */}
           <button
             class="button button1"
@@ -120,7 +123,7 @@ const ReturnProductModal = () => {
               window.location.reload(false);
             }}
           >
-            Confirm Return
+            Confirm
           </button>
 
           <button

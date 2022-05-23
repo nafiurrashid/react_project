@@ -8,8 +8,8 @@ import { ReactDOM } from "react-dom";
 import ReturnProductModal from "../returnProductModal";
 // import {isTSAnyKeyword} from '@babel/types';
 import "jest-dom/extend-expect";
-import {cleanup, render} from '@testing-library/react';
-import renderer from "react-test-renderer";
+import {cleanup} from '@testing-library/react';
+//import renderer from "react-test-renderer";
 
 afterEach(cleanup);
 it ("renders without crashing",()=>{

@@ -6,7 +6,7 @@
 
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
-import JSONDATA from "../../model/records.json";
+//import JSONDATA from "../../model/records.json";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
