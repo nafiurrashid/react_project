@@ -32,9 +32,9 @@ const ReturnProductModal = () => {
   setAvailability();
 
   return (
-    <div data-testid="returnProductModal">
+    <>
       <button class="button button1" onClick={() => setReturnModalIsOpen(true)}>
-        Return
+      Return a Product
       </button>
       <ReturnModal
         isOpen={returnModalIsOpen}
@@ -47,11 +47,11 @@ const ReturnProductModal = () => {
 
           overlay: {
             position: "fixed",
-            top: 15,
-            left: 15,
-            right: 15,
-            bottom: 15,
-            backgroundColor: "grey",
+            // top: 15,
+            // left: 15,
+            // right: 15,
+            // bottom: 15,
+            backgroundColor: 'rgba(128, 128, 128, 0.85)',
           },
 
           content: {
@@ -61,13 +61,15 @@ const ReturnProductModal = () => {
             left: "400px",
             right: "400px",
             bottom: "200px",
-            border: "1px solid #ccc",
+            border: "5px solid #ccc",
             background: "#fff",
             overflow: "auto",
             WebkitOverflowScrolling: "touch",
             borderRadius: "4px",
             outline: "none",
             padding: "20px",
+            maxWidth:"500px",
+            margin: "0 auto",
           },
         }}
       >
@@ -130,7 +132,7 @@ const ReturnProductModal = () => {
           </button>
         </div>
       </ReturnModal>
-    </div>
+    </>
   );
 };
 

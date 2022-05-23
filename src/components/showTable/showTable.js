@@ -3,6 +3,7 @@
  * @email ${nafiurrashid@gmail.com}
  * ${Version: 1.00}
  */
+
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import JSONDATA from "../../model/records.json";
@@ -54,16 +55,22 @@ const ShowTable = () => {
   // console.log("sk", products);
   return (
     <>
-      <div style={{ textAlign: "right" }}>
+      <div style={{ textAlign: "right", backgroundColor: "#4CAF50",borderRadius:"10px"}}>
+        <span>
+          {/* <h5 style={{ textAlign: "left"}}>Rental Table By N.R </h5> */}
+        <span style={{ textAlign: "left",float:"left",fontSize:'1.8em',fontWeight:900, padding:'2.5px',paddingLeft:'10px',paddingBottom:'10px',borderRadius:"15px"}}>Rental Software</span>
         <input
           type="text"
-          placeholder="Search.."
+          placeholder="Search by Name or Code.."
           onChange={(event) => {
             setSearchTerm(event.target.value);
           }}
         />
+        </span>
       </div>
-      <br></br>
+      
+
+      {/* <br></br> */}
 
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <TableContainer sx={{ maxHeight: 500 }}>

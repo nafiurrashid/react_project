@@ -58,7 +58,7 @@ const BookProductModal = () => {
   return (
     <>
       <button class="button button1" onClick={() => setModalIsOpen(true)}>
-        Book
+        Book a Product
       </button>
 
       <BookModal
@@ -72,11 +72,11 @@ const BookProductModal = () => {
 
           overlay: {
             position: "fixed",
-            top: 15,
-            left: 15,
-            right: 50,
-            bottom: 15,
-            backgroundColor: "grey",
+            // top: 15,
+            // left: 15,
+            // right: 50,
+            // bottom: 15,
+            backgroundColor: 'rgba(128, 128, 128, 0.85)',
           },
 
           content: {
@@ -86,13 +86,15 @@ const BookProductModal = () => {
             left: "400px",
             right: "400px",
             bottom: "40px",
-            border: "1px solid #ccc",
+            border: "5px solid #ccc",
             background: "#fff",
             overflow: "auto",
             WebkitOverflowScrolling: "touch",
             borderRadius: "4px",
             outline: "none",
             padding: "20px",
+            maxWidth:"500px",
+            margin: "0 auto",
           },
         }}
       >
