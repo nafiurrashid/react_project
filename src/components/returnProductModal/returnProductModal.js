@@ -92,24 +92,26 @@ const ReturnProductModal = () => {
 
         <p></p>
 
-        {/* Taking non-negative input of the milage that is */}
+        {/* Taking non-negative input of the milage */}
         <div>
           <label>
-            <strong>Used Mileage: </strong>
+            <strong>Mileage: </strong>
           </label>{" "}
           
           <input
             type="number"
             min="0"
             value={input}
-            onInput={(e) => setInput(e.target.value)}
+            onInput={(e) => setInput(e.target.value)
+            }
 
           />
         </div>
         <p></p>
-        <div>
-          You used {input} milage of {value.name}
-        </div>
+        <div>{input===""?"":value.name+ ' has '+ input+' milage left'}</div>
+        {/* <div> */}
+          {/* You used {input} milage of {value.name} */}
+        {/* </div> */}
 
         <div style={{ margin: '0 auto'}}>
           {/* confirmation button */}

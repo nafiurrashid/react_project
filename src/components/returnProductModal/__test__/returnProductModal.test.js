@@ -5,7 +5,7 @@
  */
 import React from "react";
 import { ReactDOM } from "react-dom";
-import ReturnProductModal from "../returnProductModal";
+import ReturnProductModal from "../ReturnProductModal";
 // import {isTSAnyKeyword} from '@babel/types';
 import "jest-dom/extend-expect";
 import {cleanup} from '@testing-library/react';

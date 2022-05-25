@@ -13,7 +13,7 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import TablePagination from '@mui/material/TablePagination';
+import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
 
 const ShowTable = () => {
@@ -22,34 +22,28 @@ const ShowTable = () => {
     JSON.parse(localStorage.getItem("data"))
   );
 
+  // pagination constant assignment starts
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
 
-// pagination constant assignment starts
-const [page, setPage] = React.useState(0);
-const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
-const handleChangePage = (event, newPage) => {
-  setPage(newPage);
-};
-
-const handleChangeRowsPerPage = (event) => {
-  setRowsPerPage(+event.target.value);
-  setPage(0);
-};
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
 
   // pagination constant assignment end
 
   useEffect(() => {
-    
-    window.addEventListener('storage', () => {
+    window.addEventListener("storage", () => {
       // When local storage changes, dump the list to
       // the console.
-      setProducts(JSON.parse(localStorage.getItem('data')) || [])   
+      setProducts(JSON.parse(localStorage.getItem("data")) || []);
     });
-    
-       
-    }, [])
-
+  }, []);
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -73,25 +67,43 @@ const handleChangeRowsPerPage = (event) => {
   // console.log("sk", products);
   return (
     <>
-      <div style={{ textAlign: "right", backgroundColor: "#4CAF50",borderRadius:"10px"}}>
+      <div
+        style={{
+          textAlign: "right",
+          backgroundColor: "#4CAF50",
+          borderRadius: "10px",
+        }}
+      >
         <span>
           {/* <h5 style={{ textAlign: "left"}}>Rental Table By N.R </h5> */}
-        <span style={{ textAlign: "left",float:"left",fontSize:'1.8em',fontWeight:900, padding:'2.5px',paddingLeft:'10px',paddingBottom:'10px',borderRadius:"15px"}}>Rental Inventory</span>
-        <input
-          type="text"
-          placeholder="Search by Name or Code.."
-          onChange={(event) => {
-            setSearchTerm(event.target.value);
-          }}
-        />
+          <span
+            style={{
+              textAlign: "left",
+              float: "left",
+              fontSize: "1.8em",
+              fontWeight: 900,
+              padding: "2.5px",
+              paddingLeft: "10px",
+              paddingBottom: "10px",
+              borderRadius: "15px",
+            }}
+          >
+            Rental Inventory
+          </span>
+          <input
+            type="text"
+            placeholder="Search by Name or Code.."
+            onChange={(event) => {
+              setSearchTerm(event.target.value);
+            }}
+          />
         </span>
       </div>
-      
 
       {/* <br></br> */}
 
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
-        <TableContainer sx={{ maxHeight: 950 }}>
+        <TableContainer sx={{ maxHeight:950 }}>
           <Table id="rentaldata">
             <TableHead>
               <TableRow>
@@ -116,7 +128,8 @@ const handleChangeRowsPerPage = (event) => {
                 ) {
                   return val;
                 }
-              }).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              })
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((val) => {
                 return (
                   <TableBody key={val.code}>
@@ -150,14 +163,14 @@ const handleChangeRowsPerPage = (event) => {
           </Table>
         </TableContainer>
         <TablePagination
-        rowsPerPageOptions={[10, 25, 50]}
-        component="div"
-        count={products.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+          rowsPerPageOptions={[10, 15, 25]}
+          component="div"
+          count={products.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </Paper>
     </>
   );

@@ -3,6 +3,8 @@
  * @email ${nafiurrashid@gmail.com}
  * ${Version: 1.00}
  */
+
+
 import React from "react";
 import Select from "react-select";
 import { useState } from "react";
@@ -10,32 +12,36 @@ import JSONDATA from "../../dataModel/records.json";
 import DatePicker from "react-datepicker";
 import BookModal from "react-modal";
 import "react-datepicker/dist/react-datepicker.css";
+import {dayDifferenceCalculation} from './../../utitlities/dayDifferenceCalculation';
+import { rentalFeeCalculation } from '../../utitlities/rentalFeeCalculation';
+import { meterEstimationCalculation } from '../../utitlities/meterEstimationCalculation';
+import { durabilityCalculation_meterType } from '../../utitlities/durabilityCalculation_meterType';
+import { durabilityCalculation_plainType } from '../../utitlities/durabilityCalculation_plainType';
 
 
 const BookProductModal = () => {
- 
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [prod, setProd] = React.useState();
-  const [price, setprice] = useState();
+  // const [prod, setProd] = React.useState();
+  // const [price, setprice] = useState();
   const [startDate, setStartDate] = React.useState(new Date());
   const [endDate, setEndDate] = React.useState(new Date());
   const [value, setValue] = React.useState("");
 
-  const Timediff =
-    (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
-  const onButtonClick = () => {
-    var date1 = new Date(startDate);
-    var date2 = new Date(endDate);
+  // const Timediff =
+  //   (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
+  // const onButtonClick = () => {
+    // var date1 = new Date(startDate);//c
+    // var date2 = new Date(endDate);//c
 
     // To calculate the time difference of two dates
-    var Difference_In_Time = date2.getTime() - date1.getTime();
+    // var Difference_In_Time = date2.getTime() - date1.getTime();//c
 
     // To calculate the no. of days between two dates
-    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-    setModalIsOpen(true);
+    // var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);//c
+    // setModalIsOpen(true);
     //setShowBookModal(false)
-    setprice(prod[0].price * (Difference_In_Days + 1)); // Since start date = end date, the rental period is 1 day.
-  };
+    // setprice(prod[0].price * (Difference_In_Days + 1));//c // Since start date = end date, the rental period is 1 day.
+  // };
 
   const setAvailability = () => {
     let jsonData = localStorage.getItem("data");
@@ -52,7 +58,7 @@ const BookProductModal = () => {
       localStorage.setItem("data", JSON.stringify(JSONDATA));
     }
   };
-  setAvailability();
+ 
   return (
     <>
       <button className="button button1" onClick={() => setModalIsOpen(true)}>
@@ -70,11 +76,7 @@ const BookProductModal = () => {
 
           overlay: {
             position: "fixed",
-            // top: 15,
-            // left: 15,
-            // right: 50,
-            // bottom: 15,
-            backgroundColor: 'rgba(128, 128, 128, 0.2)',
+            backgroundColor: "rgba(128, 128, 128, 0.2)",
           },
 
           content: {
@@ -91,10 +93,10 @@ const BookProductModal = () => {
             borderRadius: "4px",
             outline: "none",
             padding: "20px",
-            maxWidth:"400px",
+            maxWidth: "400px",
             margin: "0 auto",
-            height: 'fit-content',
-            width: 'fit-content',
+            height: "fit-content",
+            width: "fit-content",
           },
         }}
       >
@@ -116,7 +118,7 @@ const BookProductModal = () => {
         <span>
           <strong>From</strong>{" "}
         </span>
-        
+
         <DatePicker
           selected={startDate}
           minDate={new Date()}
@@ -135,36 +137,52 @@ const BookProductModal = () => {
 
         <p></p>
 
+  
         <div>
-          You want to Book {value.name} {value.code} from {startDate.getDate()}/
+          You want to book {value.name} {value.code} from {startDate.getDate()}/
           {startDate.getMonth()}/{startDate.getFullYear()} to{" "}
           {endDate.getDate()}/{endDate.getMonth()}/{endDate.getFullYear()}
         </div>
 
-        <div> Minimum Rental Period: {value.minimum_rent_period} Days</div>
-        <div>Selected Rental Period: {Math.round(Timediff)} Days</div>
-        <div> Product Price: BDT{value.price} </div>
 
+        <div>Minimum Rental Period:{value.minimum_rent_period?' '+value.minimum_rent_period+' Days':''}</div>
+
+        <div>Selected Rental Period: {dayDifferenceCalculation(endDate,startDate)?" "+dayDifferenceCalculation(endDate,startDate)+' Days':""}</div>
+
+        <div> Product Price:{value.price?' BDT '+value.price :''} </div>
         <hr></hr>
 
-        <div>
-          <strong>Your Rental Fee: </strong>
-          {Math.round(Timediff) * value.price}
-        </div>
-        <div>
-          <strong>Meter Estimation:</strong> {Math.round(Timediff) * 10}
-        </div>
-        <div>
-          <strong>Durability calculation: </strong>
-          {value.type === "meter"
-            ? // for meter type
-              value.durability - 2 * Math.round(Timediff)
-            : // for not "meter" which is plain type
-              value.durability - Math.round(Timediff) - (value.mileage % 10)}
-        </div>
+<div>
+<strong>Your Rental Fee: </strong>
+  {rentalFeeCalculation(dayDifferenceCalculation(endDate,startDate),value.price)?rentalFeeCalculation(dayDifferenceCalculation(endDate,startDate),value.price):''}</div>
+
+<div>
+ 
+          <strong>Meter Estimation:</strong> {meterEstimationCalculation(dayDifferenceCalculation(endDate,startDate))?meterEstimationCalculation(dayDifferenceCalculation(endDate,startDate)) :''}
+        </div> 
 
         <div>
-          {value.minimum_rent_period <= Math.round(Timediff) ? (
+          <strong>Durability calculation: </strong>
+          
+          {value.type === "meter"
+            ? // for meter type  
+   
+            durabilityCalculation_meterType(dayDifferenceCalculation(endDate,startDate),value.durability)
+            : // for not "meter" which is plain type
+            value.type === "plain"
+              ?
+
+              durabilityCalculation_plainType(dayDifferenceCalculation(endDate,startDate),value.durability,value.mileage)
+              :
+              ""
+              }
+        </div>
+
+     
+        
+ 
+        <div>
+          {value.minimum_rent_period <= dayDifferenceCalculation(endDate,startDate) ? (
             <>
               {/* If a value more or equal to than minimum rental period is selected */}
               <p style={{ color: "green" }}>
@@ -181,9 +199,7 @@ const BookProductModal = () => {
               >
                 Yes
               </button>
-
               <span> </span>
-
               <button
                 className="button button1"
                 onClick={() => setModalIsOpen(false)}
