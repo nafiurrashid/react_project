@@ -54,6 +54,7 @@
     "@testing-library/react": "^13.2.0",
     "@types/lodash-es": "^4.17.6",
     "autoprefixer": "^10.4.7",
+    "jest": "^28.1.0",
     "jest-dom": "^4.0.0",
     "postcss": "^8.4.13",
     "react-test-renderer": "^18.1.0",

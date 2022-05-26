@@ -6,7 +6,5 @@ export const rentalFeeCalculation = (daydiff,price) => {
    }catch(err){
     console.log(err)
    }
-
     return rentalFee;
   }
-  

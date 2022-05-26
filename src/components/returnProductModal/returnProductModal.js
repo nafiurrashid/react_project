@@ -17,7 +17,6 @@ const ReturnProductModal = () => {
     let jsonData = localStorage.getItem("data");
     if (jsonData) {
       jsonData = JSON.parse(jsonData);
-
       jsonData.map((data) => {
         if (data.code === value.code) {
           data.availability = true;
@@ -26,10 +25,11 @@ const ReturnProductModal = () => {
       });
       localStorage.setItem("data", JSON.stringify(jsonData));
     } else {
+      //if no data found in localStorage, get data from json data and save it in localstorage
       localStorage.setItem("data", JSON.stringify(JSONDATA));
     }
   };
-  setAvailability();
+  // setAvailability();
 
   return (
     <>
