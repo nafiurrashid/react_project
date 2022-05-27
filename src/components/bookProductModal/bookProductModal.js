@@ -3,11 +3,10 @@
  * @email ${nafiurrashid@gmail.com}
  * ${Version: 1.00}
  */
-
-
 import React from "react";
 import Select from "react-select";
 import { useState } from "react";
+import { logger } from "react-native-logs";
 import JSONDATA from "../../dataModel/records.json";
 import DatePicker from "react-datepicker";
 import BookModal from "react-modal";
@@ -19,43 +18,29 @@ import { durabilityCalculation_meterType } from '../../utitlities/durabilityCalc
 import { durabilityCalculation_plainType } from '../../utitlities/durabilityCalculation_plainType';
 
 
+var log = logger.createLogger();
+  
+
 const BookProductModal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const [prod, setProd] = React.useState();
-  // const [price, setprice] = useState();
   const [startDate, setStartDate] = React.useState(new Date());
   const [endDate, setEndDate] = React.useState(new Date());
   const [value, setValue] = React.useState("");
-
-  // const Timediff =
-  //   (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
-  // const onButtonClick = () => {
-    // var date1 = new Date(startDate);//c
-    // var date2 = new Date(endDate);//c
-
-    // To calculate the time difference of two dates
-    // var Difference_In_Time = date2.getTime() - date1.getTime();//c
-
-    // To calculate the no. of days between two dates
-    // var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);//c
-    // setModalIsOpen(true);
-    //setShowBookModal(false)
-    // setprice(prod[0].price * (Difference_In_Days + 1));//c // Since start date = end date, the rental period is 1 day.
-  // };
-
   const setAvailability = () => {
     let jsonData = localStorage.getItem("data");
     if (jsonData) {
       jsonData = JSON.parse(jsonData);
-
+      log.info("parsing from Json Data");
       jsonData.map((data) => {
         if (data.code === value.code) {
           data.availability = false;
         }
       });
       localStorage.setItem("data", JSON.stringify(jsonData));
+      log.info("Local Storage is updated");
     } else {
-      localStorage.setItem("data", JSON.stringify(JSONDATA));
+      localStorage.setItem("data", JSON.stringify(JSONDATA));  
+      log.info("Local Storage is saved from Json Data");
     }
   };
  
@@ -63,6 +48,7 @@ const BookProductModal = () => {
     <>
       <button className="button button1" onClick={() => setModalIsOpen(true)}>
         Book a Product
+        
       </button>
 
       <BookModal
@@ -104,6 +90,7 @@ const BookProductModal = () => {
         <span>
           <strong>Product booking:</strong>
         </span>
+        
         <Select
           name="choice"
           options={JSON.parse(localStorage.getItem("data")).filter(

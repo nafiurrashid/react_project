@@ -6,7 +6,6 @@
 
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
-//import JSONDATA from "../../dataModel/records.json";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
@@ -64,9 +63,10 @@ const ShowTable = () => {
       border: 0,
     },
   }));
-  // console.log("sk", products);
+
   return (
     <>
+   
       <div
         style={{
           textAlign: "right",
@@ -75,7 +75,6 @@ const ShowTable = () => {
         }}
       >
         <span>
-          {/* <h5 style={{ textAlign: "left"}}>Rental Table By N.R </h5> */}
           <span
             style={{
               textAlign: "left",
