@@ -11,7 +11,7 @@ import ReturnProductModal from "../components/ReturnProductModal/returnProductMo
 const RentalTableHome = () => {
     return (
         <div className="container">
-            <br></br>
+           
             {/* Search & Show table starts */}
             <ShowTable />
             <div style={{ textAlign: "right" }}>

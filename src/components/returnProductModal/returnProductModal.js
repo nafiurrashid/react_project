@@ -29,7 +29,7 @@ const ReturnProductModal = () => {
       localStorage.setItem("data", JSON.stringify(JSONDATA));
     }
   };
-  setAvailability();
+
 
   return (
     <>
@@ -47,17 +47,12 @@ const ReturnProductModal = () => {
 
           overlay: {
             position: "fixed",
-            // top: 15,
-            // left: 15,
-            // right: 15,
-            // bottom: 15,
             backgroundColor: 'rgba(128, 128, 128, .2)',
           },
 
           content: {
             color: "Black",
             position: "absolute",
-            // top: "100px",
             left: "40px",
             right: "40px",
             bottom: "20px",
@@ -109,9 +104,7 @@ const ReturnProductModal = () => {
         </div>
         <p></p>
         <div>{input===""?"":value.name+ ' has '+ input+' milage left'}</div>
-        {/* <div> */}
-          {/* You used {input} milage of {value.name} */}
-        {/* </div> */}
+
 
         <div style={{ margin: '0 auto'}}>
           {/* confirmation button */}

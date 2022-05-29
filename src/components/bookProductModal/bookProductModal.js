@@ -21,27 +21,9 @@ import { durabilityCalculation_plainType } from '../../utitlities/durabilityCalc
 
 const BookProductModal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const [prod, setProd] = React.useState();
-  // const [price, setprice] = useState();
   const [startDate, setStartDate] = React.useState(new Date());
   const [endDate, setEndDate] = React.useState(new Date());
   const [value, setValue] = React.useState("");
-
-  // const Timediff =
-  //   (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
-  // const onButtonClick = () => {
-    // var date1 = new Date(startDate);//c
-    // var date2 = new Date(endDate);//c
-
-    // To calculate the time difference of two dates
-    // var Difference_In_Time = date2.getTime() - date1.getTime();//c
-
-    // To calculate the no. of days between two dates
-    // var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);//c
-    // setModalIsOpen(true);
-    //setShowBookModal(false)
-    // setprice(prod[0].price * (Difference_In_Days + 1));//c // Since start date = end date, the rental period is 1 day.
-  // };
 
   const setAvailability = () => {
     let jsonData = localStorage.getItem("data");
