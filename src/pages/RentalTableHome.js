@@ -4,9 +4,9 @@
  * ${Version: 1.00}
  */
 import React from 'react';
-import ShowTable from "../components/ShowTable/ShowTable"
-import BookProductModal from "../components/BookProductModal/BookProductModal";
-import ReturnProductModal from "../components/ReturnProductModal/ReturnProductModal";
+import ShowTable from "../components/ShowTable/showTable"
+import BookProductModal from "../components/BookProductModal/bookProductModal";
+import ReturnProductModal from "../components/ReturnProductModal/returnProductModal";
 
 const RentalTableHome = () => {
     return (
@@ -20,7 +20,7 @@ const RentalTableHome = () => {
                 {/* end modal */}
                 <ReturnProductModal />
             </div>
-          <div>©2022 Nafiur Rashid || nafiurrashid@gmail.com || All rights reserved.</div>
+          <div>©2022 Nafiur Rashid || nafiurrashid@gmail.com || All rights reserved</div>
         </div>
     );
 };

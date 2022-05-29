@@ -5,36 +5,32 @@
  */
 import React from "react";
 import Select from "react-select";
-import { logger } from "react-native-logs";
 import { useState } from "react";
 import JSONDATA from "../../dataModel/records.json";
 import "react-datepicker/dist/react-datepicker.css";
 import ReturnModal from "react-modal";
-var log = logger.createLogger();
 const ReturnProductModal = () => {
   const [returnModalIsOpen, setReturnModalIsOpen] = useState(false);
   const [value, setValue] = React.useState("");
   const [input, setInput] = useState("");
   const setAvailability = () => {
     let jsonData = localStorage.getItem("data");
-    // if there there is something in the localstorage "jsonData"
     if (jsonData) {
       jsonData = JSON.parse(jsonData);
+
       jsonData.map((data) => {
         if (data.code === value.code) {
           data.availability = true;
           data.mileage = input;
-          log.info("Update the availabilty and milage in the localStorage");
         }
       });
       localStorage.setItem("data", JSON.stringify(jsonData));
     } else {
-      //if no data found in localStorage, get data from json data and save it in localstorage
       localStorage.setItem("data", JSON.stringify(JSONDATA));
-      log.info("Local Storage is saved from Json Data");
     }
   };
-  
+  setAvailability();
+
   return (
     <>
       <button className="button button1" onClick={() => setReturnModalIsOpen(true)}>
@@ -51,12 +47,17 @@ const ReturnProductModal = () => {
 
           overlay: {
             position: "fixed",
+            // top: 15,
+            // left: 15,
+            // right: 15,
+            // bottom: 15,
             backgroundColor: 'rgba(128, 128, 128, .2)',
           },
 
           content: {
             color: "Black",
             position: "absolute",
+            // top: "100px",
             left: "40px",
             right: "40px",
             bottom: "20px",
@@ -87,8 +88,7 @@ const ReturnProductModal = () => {
           onChange={setValue}
           getOptionLabel={(value) => value.name + "/" + value.code} // here 'name/code' format is followed
           getOptionValue={(value) => value.code} // code is the unique value by which it is recognised
-        >
-        </Select>
+        ></Select>
 
         <p></p>
 
@@ -109,6 +109,9 @@ const ReturnProductModal = () => {
         </div>
         <p></p>
         <div>{input===""?"":value.name+ ' has '+ input+' milage left'}</div>
+        {/* <div> */}
+          {/* You used {input} milage of {value.name} */}
+        {/* </div> */}
 
         <div style={{ margin: '0 auto'}}>
           {/* confirmation button */}
