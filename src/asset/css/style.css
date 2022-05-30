@@ -49,8 +49,6 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
     font-size: calc(10px + 2vmin);
     color: white;
   }
@@ -87,6 +85,7 @@
     padding-bottom: 5px;
     border-radius: .6em;
   }
+
   
   #rentaldata {
     font-family: Arial, Helvetica, sans-serif;
@@ -103,10 +102,3 @@
   
   #rentaldata tr:hover {background-color: #ddd;}
   
-  /* #rentaldata th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #04AA6D;
-    color: white;
-  } */

@@ -1,13 +1,28 @@
-import { logger } from 'react-native-logs';
- var log = logger.createLogger();
+/**
+ * @author ${Nafiur Rashid}
+ * @email ${nafiurrashid@gmail.com}
+ * ${Version: 1.00}
+ */
+import { InformationofLog,ErrorofLog } from "../helper/logConfig"; 
 export const rentalFeeCalculation = (daydiff,price) => {
-  log.info('Calculating rental fee..')
+  InformationofLog('Calculating rental fee..')
    let rentalFee= 0;
-   try{
-    rentalFee= daydiff*price
-   }catch(err){
-    log.Error(err);
-   }
+   if(
+      !isNaN(+daydiff)
+       && 
+       !isNaN(+price) 
+       )
+{
+      try{
+        rentalFee= daydiff*price;
+      }catch(err){
+         ErrorofLog(err);
+      }
+  }
+  else { 
+    ErrorofLog('rentalFeeCalculation(): daydiff & price is missing');
+      throw new Error('rentalFeeCalculation(): daydiff & price is missing');
+  }
 
     return rentalFee;
   }

@@ -23,7 +23,7 @@ const BookProductModal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [startDate, setStartDate] = React.useState(new Date());
   const [endDate, setEndDate] = React.useState(new Date());
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState('');
 
   const setAvailability = () => {
     let jsonData = localStorage.getItem("data");
@@ -94,6 +94,7 @@ const BookProductModal = () => {
             (value) => value.availability
           )}
           value={value}
+
           onChange={setValue}
           getOptionLabel={(value) => value.name + "/" + value.code}
           getOptionValue={(value) => value.availability && value.code}
@@ -133,16 +134,16 @@ const BookProductModal = () => {
 
         <div>Selected Rental Period: {dayDifferenceCalculation(endDate,startDate)?" "+dayDifferenceCalculation(endDate,startDate)+' Days':""}</div>
 
-        <div> Product Price:{value.price?' BDT '+value.price :''} </div>
+        <div> Product Price:{value.price?' BDT '+value.price:''} </div>
         <hr></hr>
 
 <div>
 <strong>Your Rental Fee: </strong>
-  {rentalFeeCalculation(dayDifferenceCalculation(endDate,startDate),value.price)?rentalFeeCalculation(dayDifferenceCalculation(endDate,startDate),value.price):''}</div>
+  {value.price?rentalFeeCalculation(dayDifferenceCalculation(endDate,startDate),value.price):""}</div>
 
 <div>
  
-          <strong>Meter Estimation:</strong> {meterEstimationCalculation(dayDifferenceCalculation(endDate,startDate))?meterEstimationCalculation(dayDifferenceCalculation(endDate,startDate)) :''}
+          <strong>Meter Estimation:</strong> {meterEstimationCalculation(dayDifferenceCalculation(endDate,startDate))?meterEstimationCalculation(dayDifferenceCalculation(endDate,startDate)):""}
         </div> 
 
         <div>
@@ -155,7 +156,6 @@ const BookProductModal = () => {
             : // for not "meter" which is plain type
             value.type === "plain"
               ?
-
               durabilityCalculation_plainType(dayDifferenceCalculation(endDate,startDate),value.durability,value.mileage)
               :
               ""
