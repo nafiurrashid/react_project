@@ -3,7 +3,7 @@
  * @email ${nafiurrashid@gmail.com}
  * ${Version: 1.00}
  */
-
+import JSONDATA from '../../dataModel/records.json';
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -20,6 +20,21 @@ const ShowTable = () => {
   const [products, setProducts] = useState(
     JSON.parse(localStorage.getItem("data"))
   );
+
+
+
+
+
+  // 
+  let jsonData = localStorage.getItem("data");
+  if (jsonData) {
+    jsonData = JSON.parse(jsonData);
+
+    localStorage.setItem("data", JSON.stringify(jsonData));
+  } else {
+    localStorage.setItem("data", JSON.stringify(JSONDATA));
+  }
+  // 
 
   // pagination constant assignment starts
   const [page, setPage] = React.useState(0);
@@ -128,6 +143,7 @@ const ShowTable = () => {
                 ) {
                   return val;
                 }
+                return 0;
               })
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((val) => {

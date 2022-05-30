@@ -17,16 +17,18 @@ const ReturnProductModal = () => {
     let jsonData = localStorage.getItem("data");
     if (jsonData) {
       jsonData = JSON.parse(jsonData);
-
       jsonData.map((data) => {
         if (data.code === value.code) {
           data.availability = true;
           data.mileage = input;
         }
+        return 0;
       });
       localStorage.setItem("data", JSON.stringify(jsonData));
+
     } else {
       localStorage.setItem("data", JSON.stringify(JSONDATA));
+      
     }
   };
 
@@ -40,6 +42,7 @@ const ReturnProductModal = () => {
         isOpen={returnModalIsOpen}
         shouldCloseOnOverlayClick={false}
         onRequestClose={() => setReturnModalIsOpen(false)}
+        ariaHideApp={false}
         style={{
           display: "flex",
           justifyContent: "center",

@@ -4,11 +4,12 @@
  * ${Version: 1.00}
  */
  import {verifyInvalidInputType} from "./errorCheck"; 
- import { logger } from 'react-native-logs';
- var log = logger.createLogger();
+import { logger } from 'react-native-logs';
+ var log = logger.createLogger();//daydiff=throw(‘error msg’)
  
  export const durabilityCalculation_meterType = (daydiff=verifyInvalidInputType('daydiff is missing'),durability=verifyInvalidInputType('durablity is missing')) => {
-     log.info("calculating durablity for Meter Type..");
+     log.info("pcalculating durablity for Meter Type");
+    //  debugger
      let durability_meterType= 0
  
      if( !isNaN(daydiff) && !isNaN(durability) ) 

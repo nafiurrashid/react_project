@@ -34,6 +34,7 @@ const BookProductModal = () => {
         if (data.code === value.code) {
           data.availability = false;
         }
+        return 0;
       });
       localStorage.setItem("data", JSON.stringify(jsonData));
     } else {
@@ -51,6 +52,7 @@ const BookProductModal = () => {
         isOpen={modalIsOpen}
         shouldCloseOnOverlayClick={false}
         onRequestClose={() => setModalIsOpen(false)}
+        ariaHideApp={false}
         style={{
           display: "flex",
           justifyContent: "center",
