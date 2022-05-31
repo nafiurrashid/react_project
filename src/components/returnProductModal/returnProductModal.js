@@ -3,7 +3,6 @@
  * @email ${nafiurrashid@gmail.com}
  * ${Version: 1.00}
  */
-
  import React from "react";
  import Select from "react-select";
  import { useState } from "react";
@@ -13,8 +12,7 @@
  import { setMileageandAvailability } from "../../helper/manageLocalStorage";
  import Swal from "sweetalert2";
  const ReturnProductModal = () => {
-   const [returnModalIsOpen, setReturnModalIsOpen] = useState(false);
- 
+   const [returnModalIsOpen, setReturnModalIsOpen] = useState(false); 
    const [value, setValue] = React.useState("");
    const [input, setInput] = useState("");
  
@@ -35,11 +33,9 @@
            display: "flex",
            justifyContent: "center",
            alignItems: "center",
- 
            overlay: {
              backgroundColor: "rgba(128, 128, 128, .2)",
            },
- 
            content: {
              color: "Black",
              border: "5px solid #ccc",
@@ -83,23 +79,37 @@
          <div>
            {input === "" ? "" : value.name + " has " + input + " milage left"}
          </div>
- 
+
          <div style={{ margin: "0 auto" }}>
            {/* confirmation button */}
            <button
              className="button button1"
              style={{ color: "white" }}
              onClick={() => {
-               Swal.fire({
-                 icon: "success",
-                 title: "Congratilation",
-                 text: "Your Return Data is d!",
-                 confirmButtonColor: "#4CAF50",
-               }).then(function () {
-                 setReturnModalIsOpen(false);
-                 window.location.reload(false);
-                 setMileageandAvailability(JSONDATA, value, input);
-               });
+              Swal.fire({
+                title: 'Do you want to procced?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4CAF50',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire(
+                    'Product returned!',
+                    'Your request has been recorded.',
+                    'success'
+                  ).then(function () {
+                    setReturnModalIsOpen(false);
+                    window.location.reload(false);
+                    setMileageandAvailability(JSONDATA, value, input);
+                  });
+                }
+              })
+
+
+
              }}
            >
              Confirm
