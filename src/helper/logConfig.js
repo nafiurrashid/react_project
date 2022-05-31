@@ -1,3 +1,8 @@
+/**
+ * @author ${Nafiur Rashid}
+ * @email ${nafiurrashid@gmail.com}
+ * ${Version: 1.00}
+ */
 import * as log from 'loglevel';
 log.enableAll();
 

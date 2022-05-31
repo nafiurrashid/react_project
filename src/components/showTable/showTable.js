@@ -14,27 +14,22 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
-
+import {updateTable} from "../../helper/manageLocalStorage";
+// import { manageLocalStorage,ShowTable } from "../../helper/manageLocalStorage";
 const ShowTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [products, setProducts] = useState(
     JSON.parse(localStorage.getItem("data"))
   );
+updateTable(JSONDATA);
+  // let jsonData = localStorage.getItem("data");
+  // if (jsonData) {
+  //   jsonData = JSON.parse(jsonData);
 
-
-
-
-
-  // 
-  let jsonData = localStorage.getItem("data");
-  if (jsonData) {
-    jsonData = JSON.parse(jsonData);
-
-    localStorage.setItem("data", JSON.stringify(jsonData));
-  } else {
-    localStorage.setItem("data", JSON.stringify(JSONDATA));
-  }
-  // 
+  //   localStorage.setItem("data", JSON.stringify(jsonData));
+  // } else {
+  //   localStorage.setItem("data", JSON.stringify(JSONDATA));
+  // }
 
   // pagination constant assignment starts
   const [page, setPage] = React.useState(0);

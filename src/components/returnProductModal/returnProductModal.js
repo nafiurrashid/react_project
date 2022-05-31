@@ -9,29 +9,11 @@ import { useState } from "react";
 import JSONDATA from "../../dataModel/records.json";
 import "react-datepicker/dist/react-datepicker.css";
 import ReturnModal from "react-modal";
+import {setMileageandAvailability} from "../../helper/manageLocalStorage";
 const ReturnProductModal = () => {
   const [returnModalIsOpen, setReturnModalIsOpen] = useState(false);
   const [value, setValue] = React.useState("");
   const [input, setInput] = useState("");
-  const setAvailability = () => {
-    let jsonData = localStorage.getItem("data");
-    if (jsonData) {
-      jsonData = JSON.parse(jsonData);
-      jsonData.map((data) => {
-        if (data.code === value.code) {
-          data.availability = true;
-          data.mileage = input;
-        }
-        return 0;
-      });
-      localStorage.setItem("data", JSON.stringify(jsonData));
-
-    } else {
-      localStorage.setItem("data", JSON.stringify(JSONDATA));
-      
-    }
-  };
-
 
   return (
     <>
@@ -49,23 +31,12 @@ const ReturnProductModal = () => {
           alignItems: "center",
 
           overlay: {
-            position: "fixed",
             backgroundColor: 'rgba(128, 128, 128, .2)',
           },
 
           content: {
             color: "Black",
-            position: "absolute",
-            left: "40px",
-            right: "40px",
-            bottom: "20px",
             border: "5px solid #ccc",
-            background: "#fff",
-            overflow: "auto",
-            WebkitOverflowScrolling: "touch",
-            borderRadius: "4px",
-            outline: "none",
-            padding: "20px",
             maxWidth:"400px",
             margin: "0 auto",
             height: 'fit-content',
@@ -115,9 +86,9 @@ const ReturnProductModal = () => {
             className="button button1"
             style={{ color: "white" }}
             onClick={() => {
-              alert("Your Product return request has been recorded");
+              // alert("Your Product return request has been recorded");
               setReturnModalIsOpen(false);
-              setAvailability();
+              setMileageandAvailability(JSONDATA,value,input);
               window.location.reload(false);
             }}
           >

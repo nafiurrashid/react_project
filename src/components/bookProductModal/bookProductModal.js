@@ -17,6 +17,7 @@ import { rentalFeeCalculation } from '../../utitlities/rentalFeeCalculation';
 import { meterEstimationCalculation } from '../../utitlities/meterEstimationCalculation';
 import { durabilityCalculation_meterType } from '../../utitlities/durabilityCalculation_meterType';
 import { durabilityCalculation_plainType } from '../../utitlities/durabilityCalculation_plainType';
+import {setAvailability} from "../../helper/manageLocalStorage";
 
 
 const BookProductModal = () => {
@@ -25,22 +26,22 @@ const BookProductModal = () => {
   const [endDate, setEndDate] = React.useState(new Date());
   const [value, setValue] = React.useState('');
 
-  const setAvailability = () => {
-    let jsonData = localStorage.getItem("data");
-    if (jsonData) {
-      jsonData = JSON.parse(jsonData);
+  // const setAvailability = () => {
+  //   let jsonData = localStorage.getItem("data");
+  //   if (jsonData) {
+  //     jsonData = JSON.parse(jsonData);
 
-      jsonData.map((data) => {
-        if (data.code === value.code) {
-          data.availability = false;
-        }
-        return 0;
-      });
-      localStorage.setItem("data", JSON.stringify(jsonData));
-    } else {
-      localStorage.setItem("data", JSON.stringify(JSONDATA));
-    }
-  };
+  //     jsonData.map((data) => {
+  //       if (data.code === value.code) {
+  //         data.availability = false;
+  //       }
+  //       return 0;
+  //     });
+  //     localStorage.setItem("data", JSON.stringify(jsonData));
+  //   } else {
+  //     localStorage.setItem("data", JSON.stringify(JSONDATA));
+  //   }
+  // };
  
   return (
     <>
@@ -53,13 +54,13 @@ const BookProductModal = () => {
         shouldCloseOnOverlayClick={false}
         onRequestClose={() => setModalIsOpen(false)}
         ariaHideApp={false}
+        // The inline added as per reference documentation of the library
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
 
           overlay: {
-            position: "fixed",
             backgroundColor: "rgba(128, 128, 128, 0.2)",
           },
 
@@ -71,12 +72,6 @@ const BookProductModal = () => {
             right: "40px",
             bottom: "20px",
             border: "5px solid #ccc",
-            background: "#fff",
-            overflow: "auto",
-            WebkitOverflowScrolling: "touch",
-            borderRadius: "4px",
-            outline: "none",
-            padding: "20px",
             maxWidth: "400px",
             margin: "0 auto",
             height: "fit-content",
@@ -175,9 +170,9 @@ const BookProductModal = () => {
               <button
                 className="button button1"
                 onClick={() => {
-                  alert("Your booking request has been recorded");
+                  // alert("Your booking request has been recorded");
                   setModalIsOpen(false);
-                  setAvailability();
+                  setAvailability(JSONDATA,value);
                   window.location.reload(false);
                 }}
               >
@@ -201,7 +196,7 @@ const BookProductModal = () => {
                 className="buttonDisabled  button1"
                 disabled
                 onClick={() => {
-                  alert("Your booking request has been recorded");
+                  // alert("Your booking request has been recorded");
                   setModalIsOpen(false);
                 }}
               >

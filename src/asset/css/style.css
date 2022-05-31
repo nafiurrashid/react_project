@@ -101,4 +101,18 @@
   #rentaldata tr:nth-child(even){background-color: #f2f2f2;}
   
   #rentaldata tr:hover {background-color: #ddd;}
-  
+/*   
+.bookProductModal{
+    color: Black;
+     position: absolute;
+     top: 20px;
+     left: 40px;
+     right: 40px;
+     bottom: 20px;
+     border: 5px solid #ccc;
+     max-width: 400px;
+     margin: 0 auto;
+     height: fit-content;
+     width: fit-content;
+     
+} */
