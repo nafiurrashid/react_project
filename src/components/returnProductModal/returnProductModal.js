@@ -3,17 +3,30 @@
  * @email ${nafiurrashid@gmail.com}
  * ${Version: 1.00}
  */
+
 import React from "react";
 import Select from "react-select";
 import { useState } from "react";
 import JSONDATA from "../../dataModel/records.json";
 import "react-datepicker/dist/react-datepicker.css";
 import ReturnModal from "react-modal";
+// import ReturnConfirmModal from "../ReturnConfirmModal/returnConfirmModal";
 import {setMileageandAvailability} from "../../helper/manageLocalStorage";
+import Swal from "sweetalert2";
 const ReturnProductModal = () => {
   const [returnModalIsOpen, setReturnModalIsOpen] = useState(false);
+  // const [modalIsOpen, setModalIsOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   const [input, setInput] = useState("");
+
+  // useEffect(()=>{
+  //   if(returnModalIsOpen){
+  //     setModalIsOpen(false)
+  //   }
+  //   else {
+  //     setModalIsOpen(true)
+  //   }
+  // },[returnModalIsOpen])
 
   return (
     <>
@@ -86,10 +99,18 @@ const ReturnProductModal = () => {
             className="button button1"
             style={{ color: "white" }}
             onClick={() => {
-              // alert("Your Product return request has been recorded");
-              setReturnModalIsOpen(false);
-              setMileageandAvailability(JSONDATA,value,input);
-              window.location.reload(false);
+              Swal.fire({
+                icon: 'success',
+                title: 'Congratilation',
+                text: 'Your Return Data is d!',
+                confirmButtonColor: '#4CAF50',
+              }
+              ).then(function (){
+                
+                setReturnModalIsOpen(false);
+                window.location.reload(false);
+                setMileageandAvailability(JSONDATA,value,input);
+              })
             }}
           >
             Confirm
@@ -103,7 +124,11 @@ const ReturnProductModal = () => {
             Close
           </button>
         </div>
+        {/* <ReturnConfirmModal 
+        set={setReturnModalIsOpen} get={returnModalIsOpen}
+        /> */}
       </ReturnModal>
+      
     </>
   );
 };

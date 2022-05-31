@@ -4,7 +4,7 @@
  * ${Version: 1.00}
  */
 
-
+import Swal from "sweetalert2";
 import React from "react";
 import Select from "react-select";
 import { useState } from "react";
@@ -26,23 +26,6 @@ const BookProductModal = () => {
   const [endDate, setEndDate] = React.useState(new Date());
   const [value, setValue] = React.useState('');
 
-  // const setAvailability = () => {
-  //   let jsonData = localStorage.getItem("data");
-  //   if (jsonData) {
-  //     jsonData = JSON.parse(jsonData);
-
-  //     jsonData.map((data) => {
-  //       if (data.code === value.code) {
-  //         data.availability = false;
-  //       }
-  //       return 0;
-  //     });
-  //     localStorage.setItem("data", JSON.stringify(jsonData));
-  //   } else {
-  //     localStorage.setItem("data", JSON.stringify(JSONDATA));
-  //   }
-  // };
- 
   return (
     <>
       <button className="button button1" onClick={() => setModalIsOpen(true)}>
@@ -170,10 +153,22 @@ const BookProductModal = () => {
               <button
                 className="button button1"
                 onClick={() => {
-                  // alert("Your booking request has been recorded");
-                  setModalIsOpen(false);
-                  setAvailability(JSONDATA,value);
-                  window.location.reload(false);
+                  //  alert("Your booking request has been recorded");
+
+                  
+
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Congratilation',
+                    text: 'Your Booking is Confirmed!',
+                    confirmButtonColor: '#4CAF50',
+                  }
+                  ).then(function (){
+                    /*code to execute after alert*/
+                    setAvailability(JSONDATA,value);
+                    window.location.reload(false);
+                    setModalIsOpen(false);
+                });
                 }}
               >
                 Yes
@@ -198,6 +193,7 @@ const BookProductModal = () => {
                 onClick={() => {
                   // alert("Your booking request has been recorded");
                   setModalIsOpen(false);
+  
                 }}
               >
                 Yes
