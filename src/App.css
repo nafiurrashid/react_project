@@ -3,9 +3,8 @@
  * @email ${nafiurrashid@gmail.com}
  * ${Version: 1.00}
  */
-
-.button {
-  background-color: #4CAF50; /* Green */
+ .button {
+  background-color: #4CAF50;/* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -16,7 +15,8 @@
   cursor: pointer;
 }
 .buttonDisabled {
-  background-color: #aedeb0; /* Green */
+  background-color: #aedeb0;
+ /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -26,23 +26,22 @@
   margin: 10px 10px;
   cursor: pointer;
 }
-.button1 {font-size: 16px; border-radius: 4px;}
-
+.button1 {
+ font-size: 16px;
+  border-radius: 4px;
+}
 .App {
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+      animation: App-logo-spin infinite 20s linear;
+ }
 }
-
 .App-header {
   background-color: #8b97af;
   min-height: 100vh;
@@ -51,27 +50,23 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
 .App-link {
   color: #61dafb;
 }
-
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
-  }
+      transform: rotate(0deg);
+ }
   to {
-    transform: rotate(360deg);
-  }
+      transform: rotate(360deg);
+ }
 }
-
 table, th, td {
   border:1px solid black;
 }
 table{
-  width:100%
+  width:100% 
 }
-
 .App input{
   margin-top: 20px;
   width: 300px;
@@ -79,20 +74,18 @@ table{
   font-size: 20px;
   padding-left: 10px;
 }
-
 #rentaldata {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
-
 #rentaldata td {
   border: 1px solid #ddd;
   padding: 8px;
 }
-
-#rentaldata tr:nth-child(even){background-color: #f2f2f2;}
-
-#rentaldata tr:hover {background-color: #ddd;}
-
-
+#rentaldata tr:nth-child(even){
+ background-color: #f2f2f2;
+}
+#rentaldata tr:hover {
+ background-color: #ddd;
+}
