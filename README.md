@@ -1,3 +1,18 @@
+# Project preview:
+
+https://thunderous-selkie-bc1788.netlify.app/
+
+# Resoures I have used:
+
+1.  Material UI https://mui.com/
+2.  React-select: https://react-select.com/home
+3.  React Date Picker: https://www.npmjs.com/package/react-datepicker
+4.  react-modal: https://www.npmjs.com/package/react-modal
+5.  sweetalert2: https://sweetalert2.github.io/
+6.  Loglevel: https://www.npmjs.com/package/loglevel
+7.  React Testing Library: https://testing-library.com/docs/react-testing-library/intro/
+8.  Jest: https://jestjs.io/docs/tutorial-react
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

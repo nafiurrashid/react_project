@@ -9,7 +9,7 @@
    durability,
    mileage
  ) => {
-   InformationofLog("pCalculating Durablity..plain");
+   InformationofLog("Calculating Durablity for plain type");
    let durability_plainType = 0;
    if (!isNaN(+daydiff) && !isNaN(+durability)) {
      try {

@@ -12,7 +12,7 @@
  import { setMileageandAvailability } from "../../helper/manageLocalStorage";
  import Swal from "sweetalert2";
  const ReturnProductModal = () => {
-   const [returnModalIsOpen, setReturnModalIsOpen] = useState(false); 
+   const [returnModalIsOpen, setReturnModalIsOpen] = useState(false);
    const [value, setValue] = React.useState("");
    const [input, setInput] = useState("");
  
@@ -29,6 +29,8 @@
          shouldCloseOnOverlayClick={false}
          onRequestClose={() => setReturnModalIsOpen(false)}
          ariaHideApp={false}
+         // The inline CSS added as per reference documentation of the library "react-modal"
+         //For further details: http://reactcommunity.org/react-modal/styles/
          style={{
            display: "flex",
            justifyContent: "center",
@@ -60,9 +62,7 @@
            getOptionLabel={(value) => value.name + "/" + value.code} // here 'name/code' format is followed
            getOptionValue={(value) => value.code} // code is the unique value by which it is recognised
          ></Select>
- 
          <p></p>
- 
          {/* Taking non-negative input of the milage */}
          <div>
            <label>
@@ -79,37 +79,34 @@
          <div>
            {input === "" ? "" : value.name + " has " + input + " milage left"}
          </div>
-
+ 
          <div style={{ margin: "0 auto" }}>
            {/* confirmation button */}
            <button
              className="button button1"
              style={{ color: "white" }}
              onClick={() => {
-              Swal.fire({
-                title: 'Do you want to procced?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#4CAF50',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes!'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  Swal.fire(
-                    'Product returned!',
-                    'Your request has been recorded.',
-                    'success'
-                  ).then(function () {
-                    setReturnModalIsOpen(false);
-                    window.location.reload(false);
-                    setMileageandAvailability(JSONDATA, value, input);
-                  });
-                }
-              })
-
-
-
+               Swal.fire({
+                 title: "Do you want to procced?",
+                 text: "You won't be able to revert this!",
+                 icon: "warning",
+                 showCancelButton: true,
+                 confirmButtonColor: "#4CAF50",
+                 cancelButtonColor: "#d33",
+                 confirmButtonText: "Yes!",
+               }).then((result) => {
+                 if (result.isConfirmed) {
+                   Swal.fire(
+                     "Product returned!",
+                     "Your request has been recorded.",
+                     "success"
+                   ).then(function () {
+                     setReturnModalIsOpen(false);
+                     window.location.reload(false);
+                     setMileageandAvailability(JSONDATA, value, input);
+                   });
+                 }
+               });
              }}
            >
              Confirm
