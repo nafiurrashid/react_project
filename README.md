@@ -1,6 +1,8 @@
 # Project preview:
 
 https://thunderous-selkie-bc1788.netlify.app/
+# Docker image of the project
+https://hub.docker.com/repository/docker/nafiurrashid/rental_inventory 
 
 # Resoures I have used:
 
