@@ -1,13 +1,25 @@
-FROM node:14-alpine as build
+#use Node.js image to build and serve the React app
+FROM node:18-alpine
+
+# Set working directory
 WORKDIR /app
-COPY package.json /app
-COPY package-lock.json /app
-RUN npm install
-COPY . /app
+
+# Install dependencies
+COPY package.json package-lock.json ./
+RUN npm install --legacy-peer-deps
+
+# Copy the rest of the application files
+COPY . .
+
+# Build the application
 RUN npm run build
 
-FROM nginx:alpine
-COPY /nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/build /usr/share/nginx/html
+# Install a simple HTTP server to serve the app
+RUN npm install -g serve
 
-EXPOSE 80
+# Expose port 3000
+EXPOSE 3000
+
+# Command to serve the build directory
+CMD ["serve", "-s", "build", "-l", "3000"]
+
