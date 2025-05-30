@@ -2,6 +2,15 @@
 
 https://thunderous-selkie-bc1788.netlify.app/
 
+### Quick deployment for ubuntu
+```
+sudo apt update -y
+sudo apt install npm -y
+git clone https://github.com/nafiurrashid/react_project.git
+cd react_project
+npm i
+npm run start
+```
 # Resoures I have used:
 
 1.  Material UI https://mui.com/
@@ -13,15 +22,7 @@ https://thunderous-selkie-bc1788.netlify.app/
 7.  React Testing Library: https://testing-library.com/docs/react-testing-library/intro/
 8.  Jest: https://jestjs.io/docs/tutorial-react
 
-### Quick deployment for ubuntu
-```
-sudo apt update -y
-sudo apt install npm -y
-git clone https://github.com/nafiurrashid/react_project.git
-cd react_project
-npm i
-npm run start
-```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
