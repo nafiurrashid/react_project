@@ -1,6 +1,7 @@
 # Project preview:
 
-https://thunderous-selkie-bc1788.netlify.app/
+LTE: https://thunderous-selkie-bc1788.netlify.app/
+Latest(MasterBaranch Deployment): https://react-project-git-master-nafiurrashids-projects.vercel.app/
 
 ### Quick deployment for ubuntu
 ```
