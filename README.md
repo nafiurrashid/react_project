@@ -6,13 +6,13 @@
 ### Quick deployment for ubuntu 
 #### Development Server
 ```
-wget https://raw.githubusercontent.com/nafiurrashid/react_project/blob/master/Installation_script.sh
+wget https://raw.githubusercontent.com/nafiurrashid/react_project/refs/heads/master/Installation_script.sh
 chmod +x Installation_script.sh
 ./Installation_script.sh
 ```
 #### Production Server
 ```
-wget https://raw.githubusercontent.com/nafiurrashid/react_project/blob/master/RunReact_withnginx_onUbuntu.sh
+wget https://raw.githubusercontent.com/nafiurrashid/react_project/refs/heads/master/RunReact_withnginx_onUbuntu.sh
 chmod +x RunReact_withnginx_onUbuntu.sh
 ./RunReact_withnginx_onUbuntu.sh
 ```
