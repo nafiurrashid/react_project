@@ -3,16 +3,21 @@
 - LTE: https://thunderous-selkie-bc1788.netlify.app/
 - Latest(MasterBaranch Deployment): https://react-project-git-master-nafiurrashids-projects.vercel.app
 
-### Quick deployment for ubuntu
+### Quick deployment for ubuntu 
+#### Development Server
 ```
-sudo apt update -y
-sudo apt install npm -y
-git clone https://github.com/nafiurrashid/react_project.git
-cd react_project
-npm i
-npm run start
+wget https://raw.githubusercontent.com/nafiurrashid/react_project/blob/master/Installation_script.sh
+chmod +x Installation_script.sh
+./Installation_script.sh
 ```
-# Resoures I have used:
+#### Production Server
+```
+wget https://raw.githubusercontent.com/nafiurrashid/react_project/blob/master/RunReact_withnginx_onUbuntu.sh
+chmod +x RunReact_withnginx_onUbuntu.sh
+./RunReact_withnginx_onUbuntu.sh
+```
+
+### Resoures I have used:
 
 1.  Material UI https://mui.com/
 2.  React-select: https://react-select.com/home
