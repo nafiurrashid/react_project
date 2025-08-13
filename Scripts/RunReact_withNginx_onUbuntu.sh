@@ -36,7 +36,7 @@ npm install
 npm run build
 
 echo "📦 moving the buildfile.."
-sudo rm /var/www/html/index.nginx-debian.html
+sudo rm -rf /var/www/html/*
 sudo cp -r build/* /var/www/html/
 chmod +x *
 
