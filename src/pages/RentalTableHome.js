@@ -20,7 +20,7 @@
          <ReturnProductModal />
        </div>
        <div>
-         ©2 Nafiur Rashid || nafiurrashid@gmail.com || All rights reserved
+         ©2024 Nafiur Rashid || nafiurrashid@gmail.com || All rights reserved
        </div>
      </div>
    );
