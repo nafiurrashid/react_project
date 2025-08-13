@@ -38,6 +38,7 @@ npm run build
 echo "📦 moving the buildfile.."
 sudo rm /var/www/html/index.nginx-debian.html
 sudo cp -r build/* /var/www/html/
+chmod +x *
 
 echo "🔄 Relaod & restart Nginx..."
 sudo systemctl reload nginx
